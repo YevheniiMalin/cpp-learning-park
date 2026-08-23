@@ -16,7 +16,7 @@ function render() {
   localStorage.setItem("learning-park-language", language);
   localStorage.setItem("cpp-park-language", language);
   localStorage.setItem("python-park-language", language);
-  ["brand", "brandSub", "eyebrow", "titleTop", "titleBottom", "lead", "choose", "tasks", "stations", "languages", "cppName", "cppDesc", "pythonName", "pythonDesc", "savedLocally", "footer"].forEach(id => byId(id).textContent = copy[id]);
+  ["brand", "brandSub", "choose", "cppName", "cppDesc", "pythonName", "pythonDesc", "savedLocally", "footer"].forEach(id => byId(id).textContent = copy[id]);
   byId("cppTopics").innerHTML = copy.cppTopics.map(topic => `<span>${topic}</span>`).join("");
   byId("pythonTopics").innerHTML = copy.pythonTopics.map(topic => `<span>${topic}</span>`).join("");
   byId("cppProgressLabel").textContent = copy.progress;

@@ -8,7 +8,7 @@
 
 An interactive browser game for learning C++ and Python through clear explanations, deliberate repetition and practical coding exercises.
 
-![Code Knowledge Park preview](assets/preview.png)
+<img src="assets/preview.jpg" alt="Code Knowledge Park with C++ and Python learning routes" width="1200">
 
 ## About the project
 
