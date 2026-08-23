@@ -85,8 +85,13 @@ h1 em { color: var(--coral); font-style: italic; }
 .station-tag { position: absolute; top: 20px; right: 20px; min-width: 38px; padding: 6px 8px; text-align: center; border-radius: 7px; background: var(--ink); color: var(--yellow); font-family: monospace; font-size: 10px; }
 .station-card strong { margin-top: auto; font-family: Georgia, serif; font-size: 26px; }
 .station-card small { margin-top: 6px; color: var(--muted); }
-.station-progress-mini { position: absolute; left: 24px; bottom: 20px; color: #278857; font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+.station-progress-mini { margin-top: 11px; color: #278857; font-size: 9px; font-weight: 900; letter-spacing: .08em; }
 .station-arrow { position: absolute; right: 22px; bottom: 22px; color: var(--teal); font-size: 20px; }
+.station-reset-control { grid-column: 1 / -1; min-height: 64px; padding: 14px 24px; display: flex; align-items: center; gap: 12px; border: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.4); color: var(--ink); text-align: left; cursor: pointer; transition: background .2s; }
+.station-reset-control:hover { background: #fff0eb; }
+.station-reset-control > span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: #ffe3da; color: var(--coral); font-size: 18px; }
+.station-reset-control strong { font-size: 11px; }
+.station-reset-control small { margin-left: auto; color: var(--muted); font-size: 9px; font-weight: 800; }
 
 .lesson-section { padding: 30px max(20px, calc((100% - 1180px) / 2)) 95px; background: #fffaf0; scroll-margin-top: 20px; }
 .lesson-tabs { display: flex; gap: 5px; padding: 7px; margin-bottom: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); overflow-x: auto; }
@@ -250,6 +255,16 @@ footer p { color: var(--muted); font-size: 11px; }
 footer > a:last-child { font-size: 10px; font-weight: 800; }
 .footer-brand .brand-mark { width: 42px; height: 42px; font-size: 19px; border-radius: 13px 13px 6px 13px; box-shadow: 4px 4px 0 var(--yellow); }
 button:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.reset-dialog-backdrop[hidden] { display: none; }
+.reset-dialog-backdrop { position: fixed; inset: 0; z-index: 100; padding: 20px; display: grid; place-items: center; background: rgba(10,17,37,.72); backdrop-filter: blur(5px); }
+.reset-dialog { width: min(430px, 100%); padding: 30px; border: 1px solid rgba(255,126,98,.3); border-radius: 18px 18px 8px 18px; background: var(--paper); color: var(--ink); box-shadow: 12px 14px 0 rgba(246,200,95,.72), 0 30px 90px rgba(10,17,37,.35); }
+.reset-dialog-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: #ffe3da; color: var(--coral); font-size: 23px; }
+.reset-dialog h2 { margin: 20px 0 0; font-family: Georgia, serif; font-size: 30px; line-height: 1.05; }
+.reset-dialog > p { margin: 13px 0 0; color: #5e6372; font-size: 13px; line-height: 1.6; }
+.reset-dialog-actions { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.reset-dialog-actions button { min-height: 44px; padding: 10px 14px; border-radius: 9px; font-size: 10px; font-weight: 900; cursor: pointer; }
+.reset-dialog-cancel { border: 1px solid var(--line); background: white; color: var(--ink); }
+.reset-dialog-confirm { border: 1px solid #db654e; background: var(--coral); color: white; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 44px; }
@@ -289,6 +304,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline
   .route-section { width: min(100% - 24px, 1180px); padding: 64px 0 78px; }
   .station-grid { grid-template-columns: 1fr; }
   .station-card { min-height: 170px; }
+  .station-reset-control { align-items: flex-start; flex-wrap: wrap; }
+  .station-reset-control small { width: calc(100% - 46px); margin: -7px 0 0 46px; }
   .lesson-section { padding-top: 18px; padding-bottom: 70px; }
   .lesson-tabs { margin-bottom: 34px; }
   .task-selector { margin-top: -17px; margin-bottom: 34px; }
@@ -317,6 +334,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline
   .stamp-grid button { min-height: 125px; }
   footer { min-height: 160px; width: min(100% - 24px, 1180px); align-items: flex-start; justify-content: center; flex-direction: column; }
   footer p { margin: 0; }
+  .reset-dialog { padding: 24px; }
+  .reset-dialog-actions { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

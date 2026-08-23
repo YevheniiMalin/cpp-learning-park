@@ -64,6 +64,10 @@ function renderLanguage() {
   byId("mapKicker").textContent = copy.mapKicker;
   byId("routeTitle").textContent = copy.mapTitle;
   byId("mapLead").textContent = copy.mapLead;
+  byId("resetDialogTitle").textContent = copy.resetProgressTitle;
+  byId("resetDialogMessage").textContent = copy.resetProgressMessage;
+  byId("resetDialogNo").textContent = copy.confirmNo;
+  byId("resetDialogYes").textContent = copy.confirmYes;
   byId("footerBrand").textContent = copy.brand;
   byId("footerBrandSub").textContent = copy.brandSub;
   byId("footerText").textContent = copy.footer;
@@ -100,12 +104,13 @@ function renderStations() {
       <span class="station-number">${String(index + 1).padStart(2, "0")}</span><span class="station-tag">${count === 10 ? "✓" : stationTags[index]}</span>
       <strong>${escapeHtml(lesson.stationTitle)}</strong><small>${escapeHtml(lesson.stationCaption)}</small><span class="station-progress-mini">${count} / 10</span><span class="station-arrow">↗</span>
     </button>`;
-  }).join("");
+  }).join("") + `<button class="station-reset-control" id="mapResetProgress"><span>↺</span><strong>${escapeHtml(ui[language].resetProgress)}</strong><small>${completed.length} / 60 ${escapeHtml(ui[language].completed)}</small></button>`;
   byId("lessonTabs").innerHTML = lessons.map((lesson, index) => {
     const count = stationCompleted(index);
     return `<button role="tab" aria-selected="${index === activeStation}" class="${index === activeStation ? "active" : ""} ${count === 10 ? "done" : ""}" data-tab="${index}"><span>${count === 10 ? "✓" : `${count}/10`}</span>${escapeHtml(lesson.stationTitle)}</button>`;
   }).join("");
   document.querySelectorAll("[data-station]").forEach(button => button.addEventListener("click", () => openStation(Number(button.dataset.station), true)));
+  byId("mapResetProgress").addEventListener("click", openResetDialog);
   document.querySelectorAll("[data-tab]").forEach(button => button.addEventListener("click", () => openStation(Number(button.dataset.tab), false)));
 }
 
@@ -271,15 +276,30 @@ function moveTask(direction) {
 byId("lessonPrev").addEventListener("click", () => moveTask(-1));
 byId("lessonNext").addEventListener("click", () => moveTask(1));
 byId("startButton").addEventListener("click", () => openStation(0, false));
-byId("restartProgress").addEventListener("click", () => {
-  if (!confirm(`${ui[language].restartProgress}?`)) return;
+function openResetDialog() {
+  byId("resetDialog").hidden = false;
+  document.body.style.overflow = "hidden";
+  byId("resetDialogNo").focus();
+}
+function closeResetDialog() {
+  byId("resetDialog").hidden = true;
+  document.body.style.overflow = "";
+}
+function resetAllProgress() {
   codes = allTasks.map(task => task.starter);
   completed = [];
   results = {};
   activeStation = 0;
   activeTask = 0;
+  hintOpen = false;
+  closeResetDialog();
   renderLanguage();
-});
+}
+byId("restartProgress").addEventListener("click", openResetDialog);
+byId("resetDialogNo").addEventListener("click", closeResetDialog);
+byId("resetDialogYes").addEventListener("click", resetAllProgress);
+byId("resetDialog").addEventListener("click", event => { if (event.target === byId("resetDialog")) closeResetDialog(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape" && !byId("resetDialog").hidden) closeResetDialog(); });
 
 document.querySelectorAll("[data-language]").forEach(button => button.addEventListener("click", () => { language = button.dataset.language; renderLanguage(); }));
 byId("rideToggle").addEventListener("click", () => { running = !running; renderLanguage(); });
