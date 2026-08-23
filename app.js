@@ -6,8 +6,8 @@ const pipelineMeta = [
   { ext: "Hello!", color: "#a9df8d" }
 ];
 const stationTags = ["main", "int", "for", "()", "&", "{}"];
-let language = localStorage.getItem("cpp-park-language") || "ru";
-if (!languageOptions.some(option => option.code === language)) language = "ru";
+let language = localStorage.getItem("cpp-park-language") || "en";
+if (!languageOptions.some(option => option.code === language)) language = "en";
 let activeStation = 0;
 let activeTask = 0;
 let pipelineStep = 0;

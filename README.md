@@ -17,6 +17,7 @@ The project is designed for complete beginners. For example, the first lesson ex
 
 ## Features
 
+- English interface by default, with instant language switching
 - 60 coding exercises across 6 learning stations
 - 10 exercises per topic for deliberate repetition
 - Detailed syntax explanations with code breakdowns
@@ -24,13 +25,14 @@ The project is designed for complete beginners. For example, the first lesson ex
 - Instant validation and actionable hints
 - A dedicated program-output console after every code check
 - Task instructions positioned directly beside the editor
+- The next-task button unlocks only after a successful solution
 - Progress stored locally in the browser
 - Responsive design for desktop and mobile devices
 - Interface and lesson content in four languages:
-  - Russian
-  - Ukrainian
-  - Finnish
   - English
+  - Finnish
+  - Ukrainian
+  - Russian
 
 ## Curriculum
 
