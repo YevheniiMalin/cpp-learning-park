@@ -26,6 +26,7 @@ var CppParkContent = (() => {
     languageOptions: () => languageOptions,
     lessonGuides: () => lessonGuides,
     lessonText: () => lessonText,
+    taskCheckHints: () => taskCheckHints,
     taskGroups: () => taskGroups,
     taskInstructions: () => taskInstructions,
     taskOutputs: () => taskOutputs,
@@ -672,7 +673,14 @@ int main() {
       outputFailed: "\u0412\u044B\u0432\u043E\u0434 \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0435\u043D. \u0418\u0441\u043F\u0440\u0430\u0432\u044C \u043E\u0442\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0438 \u0437\u0430\u043F\u0443\u0441\u0442\u0438 \u043A\u043E\u0434 \u0435\u0449\u0451 \u0440\u0430\u0437.",
       noConsoleOutput: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0430\u0441\u044C \u0431\u0435\u0437 \u0432\u044B\u0432\u043E\u0434\u0430 \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u044C.",
       exitCode: "\u041A\u043E\u0434 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F",
-      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D \u043F\u043E\u0441\u043B\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u044B \u0438 \u043B\u043E\u0433\u0438\u043A\u0438 \u0440\u0435\u0448\u0435\u043D\u0438\u044F."
+      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D \u043F\u043E\u0441\u043B\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u044B \u0438 \u043B\u043E\u0433\u0438\u043A\u0438 \u0440\u0435\u0448\u0435\u043D\u0438\u044F.",
+      diagnosticTitle: "\u0427\u0442\u043E \u0438\u043C\u0435\u043D\u043D\u043E \u043D\u0443\u0436\u043D\u043E \u0438\u0441\u043F\u0440\u0430\u0432\u0438\u0442\u044C:",
+      diagnosticExpected: "\u0414\u043E\u0431\u0430\u0432\u044C \u0438\u043B\u0438 \u0438\u0441\u043F\u0440\u0430\u0432\u044C",
+      diagnosticInsertion: "\u041F\u043E\u0441\u043B\u0435 std::cout \u043F\u0440\u043E\u043F\u0443\u0449\u0435\u043D \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440 <<.",
+      diagnosticQuotes: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u0432\u043E\u0439\u043D\u044B\u0445 \u043A\u0430\u0432\u044B\u0447\u0435\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442. \u041F\u0440\u043E\u0432\u0435\u0440\u044C, \u0447\u0442\u043E \u043A\u0430\u0436\u0434\u0430\u044F \u0441\u0442\u0440\u043E\u043A\u0430 \u0437\u0430\u043A\u0440\u044B\u0442\u0430.",
+      diagnosticBraces: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0438 \u0437\u0430\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0444\u0438\u0433\u0443\u0440\u043D\u044B\u0445 \u0441\u043A\u043E\u0431\u043E\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442.",
+      diagnosticParentheses: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0438 \u0437\u0430\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u043A\u0440\u0443\u0433\u043B\u044B\u0445 \u0441\u043A\u043E\u0431\u043E\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442.",
+      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u0434\u043E\u043B\u0436\u043D\u0430 \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u0442\u043E\u0447\u043A\u043E\u0439 \u0441 \u0437\u0430\u043F\u044F\u0442\u043E\u0439 ;."
     },
     uk: {
       task: "\u0417\u0430\u0432\u0434\u0430\u043D\u043D\u044F",
@@ -696,7 +704,14 @@ int main() {
       outputFailed: "\u0412\u0438\u0432\u0435\u0434\u0435\u043D\u043D\u044F \u043D\u0435 \u043E\u0442\u0440\u0438\u043C\u0430\u043D\u043E. \u0412\u0438\u043F\u0440\u0430\u0432 \u043F\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0456 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 \u0442\u0430 \u0437\u0430\u043F\u0443\u0441\u0442\u0438 \u043A\u043E\u0434 \u0449\u0435 \u0440\u0430\u0437.",
       noConsoleOutput: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0430\u0441\u044F \u0431\u0435\u0437 \u0432\u0438\u0432\u0435\u0434\u0435\u043D\u043D\u044F \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u044C.",
       exitCode: "\u041A\u043E\u0434 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u044F",
-      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u0456\u0441\u043B\u044F \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0438 \u0442\u0430 \u043B\u043E\u0433\u0456\u043A\u0438 \u0440\u043E\u0437\u0432\u2019\u044F\u0437\u0430\u043D\u043D\u044F."
+      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u0456\u0441\u043B\u044F \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0438 \u0442\u0430 \u043B\u043E\u0433\u0456\u043A\u0438 \u0440\u043E\u0437\u0432\u2019\u044F\u0437\u0430\u043D\u043D\u044F.",
+      diagnosticTitle: "\u0429\u043E \u0441\u0430\u043C\u0435 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E \u0432\u0438\u043F\u0440\u0430\u0432\u0438\u0442\u0438:",
+      diagnosticExpected: "\u0414\u043E\u0434\u0430\u0439 \u0430\u0431\u043E \u0432\u0438\u043F\u0440\u0430\u0432",
+      diagnosticInsertion: "\u041F\u0456\u0441\u043B\u044F std::cout \u043F\u0440\u043E\u043F\u0443\u0449\u0435\u043D\u043E \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440 <<.",
+      diagnosticQuotes: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u043F\u043E\u0434\u0432\u0456\u0439\u043D\u0438\u0445 \u043B\u0430\u043F\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F. \u041F\u0435\u0440\u0435\u0432\u0456\u0440, \u0449\u043E \u043A\u043E\u0436\u0435\u043D \u0440\u044F\u0434\u043E\u043A \u0437\u0430\u043A\u0440\u0438\u0442\u043E.",
+      diagnosticBraces: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0432\u0456\u0434\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0456 \u0437\u0430\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0444\u0456\u0433\u0443\u0440\u043D\u0438\u0445 \u0434\u0443\u0436\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F.",
+      diagnosticParentheses: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0432\u0456\u0434\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0456 \u0437\u0430\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u043A\u0440\u0443\u0433\u043B\u0438\u0445 \u0434\u0443\u0436\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F.",
+      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u043C\u0430\u0454 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438\u0441\u044F \u043A\u0440\u0430\u043F\u043A\u043E\u044E \u0437 \u043A\u043E\u043C\u043E\u044E ;."
     },
     fi: {
       task: "Teht\xE4v\xE4",
@@ -720,7 +735,14 @@ int main() {
       outputFailed: "Tulostetta ei saatu. Korjaa merkityt tarkistukset ja suorita koodi uudelleen.",
       noConsoleOutput: "Ohjelma p\xE4\xE4ttyi ilman konsolitulostetta.",
       exitCode: "Paluukoodi",
-      outputNote: "Tulos n\xE4ytet\xE4\xE4n ratkaisun rakenteen ja logiikan tarkistuksen j\xE4lkeen."
+      outputNote: "Tulos n\xE4ytet\xE4\xE4n ratkaisun rakenteen ja logiikan tarkistuksen j\xE4lkeen.",
+      diagnosticTitle: "Korjaa n\xE4m\xE4 kohdat:",
+      diagnosticExpected: "Lis\xE4\xE4 tai korjaa",
+      diagnosticInsertion: "Operaattori << puuttuu std::cout-kohdan j\xE4lkeen.",
+      diagnosticQuotes: "Lainausmerkkien m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4. Tarkista, ett\xE4 jokainen merkkijono on suljettu.",
+      diagnosticBraces: "Avaavien ja sulkevien aaltosulkeiden m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4.",
+      diagnosticParentheses: "Avaavien ja sulkevien kaarisulkeiden m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4.",
+      diagnosticSemicolon: "std::cout-lauseen lopussa pit\xE4\xE4 olla puolipiste ;."
     },
     en: {
       task: "Task",
@@ -744,7 +766,14 @@ int main() {
       outputFailed: "No output was produced. Fix the marked checks and run the code again.",
       noConsoleOutput: "The program finished without console output.",
       exitCode: "Exit code",
-      outputNote: "The result is shown after the solution structure and logic are validated."
+      outputNote: "The result is shown after the solution structure and logic are validated.",
+      diagnosticTitle: "Fix these exact parts:",
+      diagnosticExpected: "Add or correct",
+      diagnosticInsertion: "The << operator is missing after std::cout.",
+      diagnosticQuotes: "The double quotation marks do not match. Check that every string is closed.",
+      diagnosticBraces: "The number of opening and closing braces does not match.",
+      diagnosticParentheses: "The number of opening and closing parentheses does not match.",
+      diagnosticSemicolon: "The std::cout statement must end with a semicolon ;."
     }
   };
   var lessonGuides = {
@@ -1512,6 +1541,83 @@ public:
 private:
     int seats_;
 };`, validate: (code) => [/class\s+Ride\s*\{[\s\S]*public\s*:/.test(code), /Ride\s*\(\s*int\s+seats\s*\)\s*:\s*seats_\s*\(\s*seats\s*\)/.test(code), /int\s+capacity\s*\(\s*\)\s*const\s*\{\s*return\s+seats_\s*;\s*\}/.test(code)] }
+    ]
+  ];
+  var taskCheckHints = [
+    [
+      [`int main()`, `std::cout << "Hello, C++!";`, `return 0;`],
+      [`int main()`, `std::cout << "My first program";`, `return 0;`],
+      [`std::cout <<`, `"Score: " << 10`, `;`],
+      [`std::cout <<`, `"Line 1\\nLine 2"`, `return 0;`],
+      [`std::cout \xD7 2`, `std::cout << "A";`, `std::cout << "B";`],
+      [`std::cout <<`, `std::cout << 42;`, `42 \u2260 "42"`],
+      [`std::cout <<`, `2 + 3`, `return 0;`],
+      [`std::cout <<`, `"Cars: " << 3`, `;`],
+      [`std::cout <<`, `"Ready" << std::endl`, `return 0;`],
+      [`#include <iostream>
+int main()`, `std::cout << "I can code!";`, `return 0;`]
+    ],
+    [
+      [`int age = 20;`, `std::cout << age;`, `return 0;`],
+      [`double price = 4.5;`, `std::cout << price;`, `return 0;`],
+      [`bool open = true;`, `std::cout << open;`, `return 0;`],
+      [`#include <string>`, `std::string name = "Alex";`, `std::cout << name;`],
+      [`int score = 10;`, `score = 15;`, `std::cout << score;`],
+      [`const int seats = 24;`, `std::cout << seats;`, `return 0;`],
+      [`int a = 7;
+int b = 5;`, `std::cout << a + b;`, `return 0;`],
+      [`double total = 10.0;`, `int count = 4;`, `std::cout << total / count;`],
+      [`int points = 5;`, `points += 3;`, `std::cout << points;`],
+      [`int visitors = 12;`, `double price = 2.5;`, `std::cout << visitors * price;`]
+    ],
+    [
+      [`if (age >= 18)`, `std::cout << "Adult";`, `{ ... }`],
+      [`if (score >= 50)`, `else { ... }`, `"Pass" + "Fail"`],
+      [`if (secret == 7)`, `std::cout << "Correct";`, `return 0;`],
+      [`age >= 12`, `&& height >= 140`, `std::cout << "Allowed";`],
+      [`for (int car = 1;`, `car <= 3; ++car`, `std::cout << car;`],
+      [`for (int i = 0;`, `i < 5; ++i`, `std::cout << i;`],
+      [`while (count < 3)`, `std::cout << count;`, `++count;`],
+      [`for (int i = 1; i <= 5;`, `sum += i;`, `std::cout << sum;`],
+      [`for (...)`, `if (i == 3) continue;`, `std::cout << i;`],
+      [`int count = 3;`, `count >= 1; --count`, `std::cout << count;`]
+    ],
+    [
+      [`void greet()`, `std::cout << "Hi";`, `greet();`],
+      [`void greet(std::string name)`, `std::cout << name;`, `greet("Alex");`],
+      [`int doubleNumber(int number)`, `return number * 2;`, `doubleNumber(4)`],
+      [`int add(int a, int b)`, `return a + b;`, `add(3, 5)`],
+      [`bool isAdult(int age)`, `return age >= 18;`, `isAdult(20)`],
+      [`int square(int value)`, `return value * value;`, `int result = square(6);`],
+      [`int triple(int value);`, `int triple(int value) { ... }`, `return value * 3;`],
+      [`int lengthOf(const std::string& text)`, `return text.size();`, `lengthOf("coaster")`],
+      [`int addThree(int a, int b, int c)`, `return add(add(a, b), c);`, `addThree(1, 2, 3)`],
+      [`int seatsLeft(int total, int occupied)`, `return total - occupied;`, `seatsLeft(24, 19)`]
+    ],
+    [
+      [`int& alias = value;`, `alias = 20;`, `std::cout << value;`],
+      [`void increment(int& value)`, `++value;`, `increment(value);`],
+      [`void swapValues(int& a, int& b)`, `int temp = a;`, `a = b; b = temp;`],
+      [`int* ptr = &value;`, `std::cout << ptr;`, `return 0;`],
+      [`int* ptr = &value;`, `std::cout << *ptr;`, `return 0;`],
+      [`*ptr = 25;`, `std::cout << value;`, `return 0;`],
+      [`int* ptr = nullptr;`, `if (ptr != nullptr)`, `std::cout << *ptr;`],
+      [`void printName(const std::string& name)`, `std::cout << name;`, `printName(name);`],
+      [`int numbers[3]`, `int* ptr = numbers;`, `std::cout << *(ptr + 1);`],
+      [`void addPassenger(int& count)`, `++count;`, `addPassenger(passengers);`]
+    ],
+    [
+      [`class Greeter { ... };`, `public:`, `void sayHi() { std::cout << "Hi"; }`],
+      [`class Ride { ... };`, `private: int speed_ = 10;`, `int speed() const`],
+      [`class Ride { ... };`, `Ride(int seats)`, `seats_ = seats;`],
+      [`class Ride { ... };`, `Ride(int seats) : seats_(seats)`, `private: int seats_;`],
+      [`Ride(int seats) : seats_(seats)`, `int capacity() const`, `return seats_;`],
+      [`class Counter { ... };`, `void increment() { ++value_; }`, `int value() const { return value_; }`],
+      [`void setSpeed(int speed)`, `speed_ = speed;`, `int speed() const`],
+      [`Ride slow(10);
+Ride fast(30);`, `Ride(int speed) : speed_(speed)`, `slow.speed() + fast.speed()`],
+      [`Rectangle(int width, int height)`, `width_(width), height_(height)`, `return width_ * height_;`],
+      [`class Ride { public: ... };`, `Ride(int seats) : seats_(seats)`, `int capacity() const { return seats_; }`]
     ]
   ];
   var taskOutputs = [

@@ -23,6 +23,7 @@ The project is designed for complete beginners. For example, the first lesson ex
 - Detailed syntax explanations with code breakdowns
 - In-browser C++ editor with task-specific starter code
 - Instant validation and actionable hints
+- Exact failed-check diagnostics showing the code pattern that needs correction
 - A dedicated program-output console after every code check
 - Task instructions positioned directly beside the editor
 - The next-task button unlocks only after a successful solution
