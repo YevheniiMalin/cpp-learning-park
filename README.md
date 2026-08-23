@@ -1,7 +1,6 @@
 # Code Knowledge Park
 
-[![Live App](https://img.shields.io/badge/LIVE_APP-open-ff5b45)](https://cpp-learning-park.malevge1985.chatgpt.site)
-[![GitHub Pages](https://img.shields.io/badge/GITHUB_PAGES-open-2ea44f)](https://yevheniimalin.github.io/cpp-learning-park/)
+[![Live App](https://img.shields.io/badge/LIVE_APP-open-2ea44f)](https://yevheniimalin.github.io/cpp-learning-park/)
 [![Exercises](https://img.shields.io/badge/EXERCISES-120-6246ea)](#courses)
 [![Courses](https://img.shields.io/badge/COURSES-C%2B%2B_%7C_PYTHON-3279b7)](#courses)
 [![Languages](https://img.shields.io/badge/LANGUAGES-5-f59e0b)](#languages)
@@ -63,16 +62,14 @@ For confirmation emails, configure Supabase Authentication URL settings as follo
 
 - Site URL: `https://yevheniimalin.github.io/cpp-learning-park/`
 - Redirect URL: `https://yevheniimalin.github.io/cpp-learning-park/account/`
-- Additional redirect URL: `https://cpp-learning-park.malevge1985.chatgpt.site/account/`
 
 The app supplies the correct confirmation return address for the deployment where the administrator creates the student account.
 
 ## Builds and deployment
 
-- `npm run build` creates the production build used by the hosted application.
+- `npm run build` creates the production build.
 - `npm run build:github` creates a static export under `out/` with the `/cpp-learning-park` base path.
-- The canonical version with authentication is [the live application](https://cpp-learning-park.malevge1985.chatgpt.site).
-- GitHub Pages serves the committed static export from the repository root.
+- [GitHub Pages](https://yevheniimalin.github.io/cpp-learning-park/) is the canonical deployment and supports account sign-in and progress synchronization.
 
 ## Progress and privacy
 

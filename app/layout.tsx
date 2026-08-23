@@ -5,7 +5,7 @@ import { AuthProvider } from "./auth-context";
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cpp-learning-park.malevge1985.chatgpt.site"),
+  metadataBase: new URL("https://yevheniimalin.github.io/cpp-learning-park/"),
   title: "Code Knowledge Park | C++ and Python",
   description: "Learn C++ and Python through 120 practical coding exercises, detailed beginner explanations and instant feedback in five languages.",
   openGraph: {
