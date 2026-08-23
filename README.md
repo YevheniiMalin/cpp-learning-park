@@ -21,6 +21,7 @@ The project is designed for complete beginners. For example, the first lesson ex
 - 60 coding exercises across 6 learning stations
 - 10 exercises per topic for deliberate repetition
 - Detailed syntax explanations with code breakdowns
+- A task-specific “Before you code” explanation for all 60 exercises
 - In-browser C++ editor with task-specific starter code
 - Instant validation and actionable hints
 - Line-and-column diagnostics for misspelled C++ words and missing symbols

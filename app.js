@@ -1,4 +1,4 @@
-const { academyUi, buildFailureOutput, languageOptions, lessonGuides, lessonText, taskCheckHints, taskGroups, taskInstructions, taskOutputs, ui } = CppParkContent;
+const { academyUi, buildFailureOutput, languageOptions, lessonGuides, lessonText, taskCheckHints, taskExplanations, taskGroups, taskInstructions, taskOutputs, ui } = CppParkContent;
 const allTasks = taskGroups.flat();
 const pipelineMeta = [
   { ext: ".cpp", color: "#ffcc66" }, { ext: "#include", color: "#ef7c65" },
@@ -27,6 +27,7 @@ try {
 
 const byId = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
+const inlineCodeHtml = value => String(value).split(/(`[^`]+`)/g).map(part => part.startsWith("`") && part.endsWith("`") ? `<code>${escapeHtml(part.slice(1, -1))}</code>` : escapeHtml(part)).join("");
 const taskIndex = () => activeStation * 10 + activeTask;
 const stationCompleted = station => completed.filter(index => Math.floor(index / 10) === station).length;
 const currentTask = () => taskGroups[activeStation][activeTask];
@@ -149,6 +150,8 @@ function renderLesson() {
 
   byId("missionLabel").textContent = `${copy.mission}: ${academy.task} ${activeTask + 1} ${academy.of} 10`;
   byId("missionText").textContent = taskInstructions[language][activeStation][activeTask];
+  byId("conceptNoteLabel").textContent = academy.conceptTitle;
+  byId("conceptNoteText").innerHTML = inlineCodeHtml(taskExplanations[language][activeStation][activeTask]);
   byId("repetitionNote").textContent = academy.repetition;
   byId("requirementsLabel").textContent = copy.requirements;
   byId("requirementList").innerHTML = academy.genericChecks.map(item => `<li>${escapeHtml(item)}</li>`).join("");
