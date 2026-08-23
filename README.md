@@ -7,7 +7,7 @@
 
 An interactive browser-based game for learning C++ through detailed explanations, repetition and practical coding exercises.
 
-![C++ Knowledge Park preview](assets/preview.png)
+![C++ Knowledge Park preview](assets/preview.jpg)
 
 ## About the project
 
@@ -80,4 +80,3 @@ This project is available under the [MIT License](LICENSE).
 ## Author
 
 Created by [Yevhenii Malin](https://github.com/YevheniiMalin).
-
