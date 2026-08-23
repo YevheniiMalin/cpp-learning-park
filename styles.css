@@ -126,9 +126,6 @@ h1 em { color: var(--coral); font-style: italic; }
 .remember-box > strong { color: #24775d; font-family: Georgia, serif; font-size: 16px; }
 .remember-box ul { margin-top: 11px; }
 .remember-box li { color: #596861; font-size: 11px; }
-.lesson-nav { display: flex; gap: 8px; margin-top: 30px; }
-.lesson-nav button { padding: 11px 15px; border: 1px solid var(--line); border-radius: 8px; background: white; cursor: pointer; font-size: 11px; font-weight: 800; }
-.lesson-nav button:disabled { opacity: .35; cursor: not-allowed; }
 .mission-card { margin-top: 24px; padding: 23px; border: 1px solid rgba(255,126,98,.26); border-radius: 12px; background: #fff4eb; box-shadow: 6px 6px 0 rgba(255,126,98,.12); }
 .mission-card > p { margin: 0 0 8px; color: var(--coral); font-size: 9px; font-weight: 900; letter-spacing: .16em; }
 .mission-card > strong { display: block; font-family: Georgia, serif; font-size: 19px; line-height: 1.42; }
@@ -157,11 +154,17 @@ h1 em { color: var(--coral); font-style: italic; }
 .line-numbers span { height: 20.4px; }
 .editor-shell textarea { width: 100%; min-height: 420px; padding: 21px 22px; resize: vertical; border: 0; outline: 0; background: transparent; color: #e8edf9; caret-color: var(--yellow); font: 12px/1.7 "Cascadia Code", Consolas, monospace; tab-size: 4; white-space: pre; overflow: auto; }
 .editor-shell textarea::selection { background: rgba(86,198,189,.28); }
-.editor-actions { min-height: 61px; padding: 11px 13px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid rgba(255,255,255,.08); background: #0d1325; }
+.editor-actions { min-height: 61px; padding: 11px 13px; display: grid; grid-template-columns: minmax(105px, 1fr) auto minmax(145px, 1.2fr) minmax(105px, 1fr); grid-template-areas: "prev reset check next"; align-items: center; gap: 10px; border-top: 1px solid rgba(255,255,255,.08); background: #0d1325; }
 .editor-actions button { min-height: 38px; padding: 9px 13px; border-radius: 7px; cursor: pointer; font-size: 10px; font-weight: 900; }
+.editor-actions button:disabled { opacity: .34; cursor: not-allowed; box-shadow: none; }
 .reset-button { border: 1px solid rgba(255,255,255,.14); background: transparent; color: rgba(255,255,255,.62); }
-.run-button { min-width: 145px; display: flex; justify-content: space-between; align-items: center; border: 0; background: var(--teal); color: var(--ink); box-shadow: 3px 3px 0 var(--yellow); }
+.editor-actions .reset-button { grid-area: reset; }
+.run-button { min-width: 0; display: flex; justify-content: space-between; align-items: center; border: 0; background: var(--teal); color: var(--ink); box-shadow: 3px 3px 0 var(--yellow); }
 .run-button span { font-size: 11px; }
+.check-button { grid-area: check; }
+.editor-nav-button { justify-content: center; gap: 8px; }
+.editor-prev { grid-area: prev; }
+.editor-next { grid-area: next; }
 .test-console { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: white; }
 .test-console.success { border-color: rgba(49,139,110,.34); box-shadow: inset 4px 0 0 #52b98f; }
 .test-heading { min-height: 44px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
@@ -186,8 +189,6 @@ h1 em { color: var(--coral); font-style: italic; }
 .program-output pre { min-height: 66px; margin: 0; padding: 17px 18px; overflow-x: auto; white-space: pre-wrap; color: #fff0b8; font: 12px/1.65 "Cascadia Code", Consolas, monospace; }
 .program-output.error pre { color: #ffb8a8; }
 .program-output > p { margin: 0; padding: 0 18px 14px; color: rgba(255,255,255,.48); font-size: 9px; line-height: 1.45; }
-.practice-nav { margin-top: 42px; padding-top: 23px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); }
-.practice-nav span { color: var(--muted); font-size: 10px; font-weight: 800; }
 .terminal-output { display: flex; gap: 18px; align-items: center; min-height: 58px; padding: 13px 20px; border-top: 1px solid rgba(255,255,255,.09); background: #0d1325; }
 .terminal-output span { color: var(--teal); font-size: 8px; font-weight: 900; letter-spacing: .17em; }
 .terminal-output code { color: #fff0b8; font-size: 11px; }
@@ -299,13 +300,11 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--coral); outline
   .editor-shell textarea { min-height: 390px; padding: 18px 14px; font-size: 10px; }
   .line-numbers { padding-top: 18px; font-size: 10px; }
   .line-numbers span { height: 17px; }
-  .editor-actions { align-items: stretch; flex-direction: column-reverse; }
+  .editor-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "prev next" "reset check"; align-items: stretch; }
   .editor-actions button { width: 100%; }
   .test-list { grid-template-columns: 1fr; }
   .test-list > div { border-right: 0; border-bottom: 1px solid var(--line); }
   .test-list > div:last-child { border-bottom: 0; }
-  .practice-nav { flex-wrap: wrap; }
-  .practice-nav span { order: -1; width: 100%; text-align: center; }
   .quiz-section { padding-top: 70px; padding-bottom: 70px; }
   .answers { grid-template-columns: 1fr; }
   .quiz-result { align-items: flex-start; flex-direction: column; }
