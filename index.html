@@ -4,16 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Learn C++ through 60 interactive coding tasks with detailed explanations in Russian, Ukrainian, Finnish or English.">
-  <meta name="author" content="Yevhenii Malin">
-  <meta name="theme-color" content="#172650">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="C++ Knowledge Park">
-  <meta property="og:description" content="An interactive C++ learning game with 60 coding exercises, detailed explanations and four languages.">
-  <meta property="og:url" content="https://yevheniimalin.github.io/cpp-learning-park/">
-  <meta property="og:image" content="https://yevheniimalin.github.io/cpp-learning-park/assets/preview.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://yevheniimalin.github.io/cpp-learning-park/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <title>C++ Knowledge Park</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -66,13 +56,12 @@
         <div class="code-window interactive">
           <div class="code-topbar"><span><i></i><i></i><i></i></span><strong id="codeFilename"></strong><small id="editorLabel"></small></div>
           <div class="editor-shell"><div class="line-numbers" id="lineNumbers" aria-hidden="true"></div><textarea id="codeEditor" spellcheck="false"></textarea></div>
-          <div class="editor-actions"><button class="reset-button" id="resetCurrent"></button><button class="run-button" id="checkCode"></button></div>
+          <div class="editor-actions"><button class="run-button editor-nav-button editor-prev" id="lessonPrev"></button><button class="reset-button" id="resetCurrent"></button><button class="run-button check-button" id="checkCode"></button><button class="run-button editor-nav-button editor-next" id="lessonNext"></button></div>
         </div>
         <div class="program-output" id="programOutput" aria-live="polite"><div class="program-output-heading"><span id="programOutputTitle"></span><small id="programOutputStatus"></small></div><pre id="programOutputText"></pre><p id="programOutputNote" hidden></p></div>
         <div class="test-console" id="testConsole"><div class="test-heading"><span id="checksLabel"></span><strong id="testScore"></strong></div><div class="test-list" id="testList"></div><div id="testMessage"></div><p class="test-disclaimer" id="testDisclaimer"></p></div>
       </div>
     </div>
-    <div class="lesson-nav practice-nav"><button id="lessonPrev"></button><span id="lessonProgress"></span><button id="lessonNext"></button></div>
   </section>
 
   <section class="progress-section" aria-labelledby="progressTitle">
