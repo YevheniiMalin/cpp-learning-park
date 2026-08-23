@@ -1,82 +1,83 @@
 # Code Knowledge Park
 
-[![Live App](https://img.shields.io/badge/Live%20App-Open%20Course-2ea44f?style=for-the-badge)](https://cpp-learning-park.malevge1985.chatgpt.site/)
-[![Static Demo](https://img.shields.io/badge/Static%20Demo-GitHub%20Pages-555?style=for-the-badge&logo=github)](https://yevheniimalin.github.io/cpp-learning-park/)
-![Exercises](https://img.shields.io/badge/exercises-120-4f46e5?style=for-the-badge)
-![Courses](https://img.shields.io/badge/courses-C%2B%2B%20%7C%20Python-3776ab?style=for-the-badge)
-![Languages](https://img.shields.io/badge/languages-5-f59e0b?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-0891b2?style=for-the-badge)
+[![Live App](https://img.shields.io/badge/LIVE_APP-open-ff5b45)](https://cpp-learning-park.malevge1985.chatgpt.site)
+[![GitHub Pages](https://img.shields.io/badge/GITHUB_PAGES-open-2ea44f)](https://yevheniimalin.github.io/cpp-learning-park/)
+[![Exercises](https://img.shields.io/badge/EXERCISES-120-6246ea)](#courses)
+[![Courses](https://img.shields.io/badge/COURSES-C%2B%2B_%7C_PYTHON-3279b7)](#courses)
+[![Languages](https://img.shields.io/badge/LANGUAGES-5-f59e0b)](#languages)
+[![License](https://img.shields.io/badge/LICENSE-MIT-0891b2)](LICENSE)
 
-An interactive browser game for learning C++ and Python through clear explanations, deliberate repetition and practical coding exercises.
+An interactive browser game for learning C++ and Python through detailed beginner explanations, deliberate repetition and practical coding exercises with instant feedback.
 
-<img src="assets/preview.jpg" alt="Code Knowledge Park with C++ and Python learning routes" width="1200">
-
-## About the project
-
-Code Knowledge Park opens with a course-selection portal and contains two independent learning routes. Each route has six stations, ten coding exercises per station, visible program output, beginner-friendly syntax explanations and precise feedback.
-
-The project is designed for complete beginners. New symbols are explained before they are required in an exercise. Courses remain fully usable without an account. The hosted edition also provides optional accounts and cross-device progress synchronization.
+![Code Knowledge Park](public/portal-hero.jpg)
 
 ## Features
 
-- Two complete learning routes: C++ and Python
-- 120 coding exercises across 12 stations
-- 10 exercises per topic for deliberate repetition
-- Detailed syntax breakdowns before practice
-- In-browser code editors with task-specific starter code
-- Visible expected program output after every successful check
-- Actionable diagnostics for misspelled words, missing symbols and common syntax mistakes
-- Previous and next controls beside the code checker
-- Next exercise unlocks only after a successful solution
-- Guest mode with separate C++ and Python progress stored locally in the browser
-- Optional email and password accounts with cross-device cloud synchronization
-- Automatic migration of local progress after sign-in
-- Administrator dashboard for issuing accounts, pausing synchronization and viewing progress
-- Protected global and per-station progress resets
-- Responsive layout for desktop and mobile
-- Complete interface in English, Finnish, Ukrainian, Russian and Thai
+- 120 practical exercises across 12 topics
+- C++ and Python learning routes
+- detailed explanations before every task
+- an in-browser editor with specific diagnostics and visible program output
+- Russian, English, Ukrainian, Finnish and Thai interface languages
+- guest mode with progress stored locally in the browser
+- optional Supabase account sign-in and progress synchronization across devices
+- administrator panel for manually creating student accounts, enabling access and viewing progress
+- individual course and topic progress reset with confirmation
 
-## Curriculum
+## Courses
 
-| C++ route | Python route | Exercises |
-| --- | --- | ---: |
-| Program structure and output | `print`, strings and output | 10 + 10 |
-| Variables, types and arithmetic | Values, variables and conversions | 10 + 10 |
-| Conditions and loops | Conditions, indentation and loops | 10 + 10 |
-| Functions and return values | Functions, parameters and return | 10 + 10 |
-| References and pointers | Lists and dictionaries | 10 + 10 |
-| Classes, objects and methods | Classes, objects and methods | 10 + 10 |
+Each course contains 6 topics with 10 exercises per topic.
 
-## Technology
+| C++ | Python |
+| --- | --- |
+| Output and `main` | Output and basic syntax |
+| Types and variables | Variables and data types |
+| Loops and logic | Conditions and loops |
+| Functions | Functions |
+| References and memory | Collections |
+| Classes and objects | Classes and objects |
 
-- HTML5
-- Modern CSS
-- Vanilla JavaScript
-- Canvas animation
-- Browser `localStorage`
-- Supabase Auth and PostgreSQL with Row Level Security in the hosted edition
-- GitHub Pages
+## Languages
 
-The GitHub Pages edition remains a dependency-free static demo with device-local progress. The primary hosted application adds optional account and synchronization features while keeping every course available to guests.
+English is selected by default. The complete interface and course material are also available in Russian, Ukrainian, Finnish and Thai.
 
-## Run locally
+## Running locally
+
+Requirements: Node.js 22.13 or newer.
 
 ```bash
-git clone https://github.com/YevheniiMalin/cpp-learning-park.git
-cd cpp-learning-park
-python -m http.server 8000
+npm ci
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+The Supabase project URL and publishable browser key are stored in `app/lib/supabase.ts`. The publishable key is intentionally public and protected by Row Level Security. Never put a Supabase `service_role` key in browser code or commit it to GitHub.
 
-## Validation model
+To create the database tables, policies and helper functions, run [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL Editor. After creating your own account, promote it manually:
 
-The trainer checks the expected structure and logic of each solution. It does not execute arbitrary C++ or Python code, so it can provide immediate beginner-friendly feedback without a backend server.
+```sql
+update public.profiles
+set role = 'admin', sync_enabled = true
+where email = 'your-email@example.com';
+```
+
+For confirmation emails, configure Supabase Authentication URL settings as follows:
+
+- Site URL: `https://yevheniimalin.github.io/cpp-learning-park/`
+- Redirect URL: `https://yevheniimalin.github.io/cpp-learning-park/account/`
+- Additional redirect URL: `https://cpp-learning-park.malevge1985.chatgpt.site/account/`
+
+The app supplies the correct confirmation return address for the deployment where the administrator creates the student account.
+
+## Builds and deployment
+
+- `npm run build` creates the production build used by the hosted application.
+- `npm run build:github` creates a static export under `out/` with the `/cpp-learning-park` base path.
+- The canonical version with authentication is [the live application](https://cpp-learning-park.malevge1985.chatgpt.site).
+- GitHub Pages serves the committed static export from the repository root.
+
+## Progress and privacy
+
+Guests can use every lesson without registration. Their progress remains in the current browser. Signed-in students whose synchronization has been enabled by an administrator can continue on another device. Each account can access only its own progress; administrators can view student completion totals and enable or disable synchronization.
 
 ## License
 
-This project is available under the [MIT License](LICENSE).
-
-## Author
-
-Created by [Yevhenii Malin](https://github.com/YevheniiMalin).
+Released under the [MIT License](LICENSE).
