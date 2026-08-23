@@ -4,7 +4,7 @@
 [![Exercises](https://img.shields.io/badge/EXERCISES-120-6246ea)](#courses)
 [![Courses](https://img.shields.io/badge/COURSES-C%2B%2B_%7C_PYTHON-3279b7)](#courses)
 [![Languages](https://img.shields.io/badge/LANGUAGES-5-f59e0b)](#languages)
-[![License](https://img.shields.io/badge/LICENSE-MIT-0891b2)](LICENSE)
+[![License](https://img.shields.io/badge/LICENSE-POLYFORM_NONCOMMERCIAL-0891b2)](LICENSE)
 
 An interactive browser game for learning C++ and Python through detailed beginner explanations, deliberate repetition and practical coding exercises with instant feedback.
 
@@ -77,4 +77,6 @@ Guests can use every lesson without registration. Their progress remains in the 
 
 ## License
 
-Released under the [MIT License](LICENSE).
+Copyright 2026 Yevhenii Malin. The source code is available under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+Noncommercial learning, personal study and permitted educational use are welcome. Selling the game, offering paid access to a copy, commercially hosting it or otherwise using it for commercial purposes requires separate written permission from the copyright holder.
