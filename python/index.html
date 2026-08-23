@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn Python through 60 interactive coding tasks with detailed explanations and precise feedback in five languages.">
+  <title>Python Park | Code Knowledge Park</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="python-course">
+  <header class="topbar">
+    <a class="brand python-brand" href="../"><span class="brand-mark">Py</span><span class="brand-copy"><strong id="brandText"></strong><small id="brandSub"></small></span></a>
+    <div class="top-actions">
+      <div class="language-switcher" id="languageSwitcher" role="group" aria-label="Language"><button data-language="ru" title="Русский">RU</button><button data-language="uk" title="Українська">UA</button><button data-language="fi" title="Suomi">FI</button><button data-language="en" title="English">EN</button><button data-language="th" title="ไทย">TH</button></div>
+      <a class="ticket-link" href="#route"><span id="routeLabel"></span> <b id="routeCounter">0 / 06</b></a>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow"><span>●</span> <b id="eyebrow"></b></p>
+      <h1><span id="heroTop"></span><br><em id="heroBottom"></em></h1>
+      <p class="lead" id="heroLead"></p>
+      <div class="hero-actions"><a class="primary-button" href="#practice" id="startButton"></a><button class="text-button" id="rideToggle"><span class="round-icon">Ⅱ</span><b></b></button></div>
+      <div class="facts"><div><strong>60</strong><span id="tasksLabel"></span></div><div><strong>5</strong><span id="languagesLabel"></span></div><div><strong>10×</strong><span id="feedbackLabel"></span></div></div>
+    </div>
+    <div class="ride-card">
+      <canvas id="parkCanvas" class="park-canvas"></canvas>
+      <div class="ride-overlay"><span class="ride-label" id="speedLabel"></span><div class="speed-control" id="speedControl"><button data-speed="0.55">1×</button><button class="active" data-speed="1">2×</button><button data-speed="1.7">3×</button></div></div>
+      <div class="ride-caption"><span id="expressLabel"></span><strong id="rideStation"></strong></div>
+    </div>
+  </section>
+
+  <section class="pipeline-section" aria-labelledby="pipelineTitle">
+    <div class="section-heading compact"><p class="kicker" id="pipelineKicker"></p><h2 id="pipelineTitle"></h2><p id="pipelineLead"></p></div>
+    <div class="pipeline" id="pipeline"></div>
+    <div class="pipeline-note" aria-live="polite"><span id="pipelineNumber">01</span><p id="pipelineText"></p></div>
+  </section>
+
+  <section class="route-section" id="route" aria-labelledby="routeTitle">
+    <div class="section-heading"><p class="kicker" id="mapKicker"></p><h2 id="routeTitle"></h2><p id="mapLead"></p></div>
+    <div class="station-grid" id="stationGrid"></div>
+  </section>
+
+  <section class="lesson-section" id="lesson" aria-labelledby="lessonTitle">
+    <div class="lesson-tabs" id="lessonTabs" role="tablist"></div>
+    <div class="task-selector"><div><span id="chooseTaskLabel"></span><strong id="stageProgressLabel"></strong></div><div class="task-dots" id="taskDots"></div></div>
+    <div class="learning-layout" id="practice">
+      <article class="lesson-copy">
+        <p class="kicker" id="lessonKicker"></p><h2 id="lessonTitle"></h2><p class="lesson-subtitle" id="lessonSubtitle"></p>
+        <div class="mission-card"><p id="missionLabel"></p><strong id="missionText"></strong><div class="concept-note"><span id="conceptNoteLabel"></span><p id="conceptNoteText"></p></div><small class="repetition-note" id="repetitionNote"></small><span class="requirement-title" id="requirementsLabel"></span><ol id="requirementList"></ol><button class="hint-toggle" id="hintToggle"><b></b><span>+</span></button><div class="hint-box" id="hintBox" hidden></div></div>
+        <div class="guide-card"><p class="theory-label" id="theoryLabel"></p><p class="lesson-body" id="guideIntro"></p><div class="syntax-breakdown"><span id="syntaxTitle"></span><code id="syntaxExample"></code><div id="syntaxParts"></div></div><div class="remember-box"><strong id="rememberLabel"></strong><ul id="rememberList"></ul></div></div>
+      </article>
+      <div class="workbench">
+        <div class="code-window interactive">
+          <div class="code-topbar"><span><i></i><i></i><i></i></span><strong id="codeFilename"></strong><small id="editorLabel"></small></div>
+          <div class="editor-shell"><div class="line-numbers" id="lineNumbers" aria-hidden="true"></div><textarea id="codeEditor" spellcheck="false"></textarea></div>
+          <div class="editor-actions"><button class="run-button editor-nav-button editor-prev" id="lessonPrev"></button><button class="reset-button" id="resetCurrent"></button><button class="run-button check-button" id="checkCode"></button><button class="run-button editor-nav-button editor-next" id="lessonNext"></button></div>
+        </div>
+        <div class="program-output" id="programOutput" aria-live="polite"><div class="program-output-heading"><span id="programOutputTitle"></span><small id="programOutputStatus"></small></div><pre id="programOutputText"></pre><p id="programOutputNote" hidden></p></div>
+        <div class="test-console" id="testConsole"><div class="test-heading"><span id="checksLabel"></span><strong id="testScore"></strong></div><div class="test-list" id="testList"></div><div id="testMessage"></div><p class="test-disclaimer" id="testDisclaimer"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="progress-section" aria-labelledby="progressTitle">
+    <div class="progress-copy"><p class="kicker" id="progressKicker"></p><h2 id="progressTitle"></h2><p id="progressLead"></p><div class="final-ticket" id="finalTicket"><span></span><strong></strong></div><button class="restart-button" id="restartProgress"></button></div>
+    <div class="stamp-grid" id="stampGrid"></div>
+  </section>
+
+  <footer><a class="brand footer-brand python-brand" href="#top"><span class="brand-mark">Py</span><span class="brand-copy"><strong id="footerBrand"></strong><small id="footerBrandSub"></small></span></a><p id="footerText"></p><a href="#top" id="topLink"></a></footer>
+  <div class="reset-dialog-backdrop" id="resetDialog" hidden><section class="reset-dialog" role="alertdialog" aria-modal="true" aria-labelledby="resetDialogTitle" aria-describedby="resetDialogMessage"><span class="reset-dialog-icon">↺</span><h2 id="resetDialogTitle"></h2><p id="resetDialogMessage"></p><div class="reset-dialog-actions"><button class="reset-dialog-cancel" id="resetDialogNo"></button><button class="reset-dialog-confirm" id="resetDialogYes"></button></div></section></div>
+</main>
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

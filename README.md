@@ -1,53 +1,47 @@
-# C++ Knowledge Park
+# Code Knowledge Park
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://yevheniimalin.github.io/cpp-learning-park/)
-![Exercises](https://img.shields.io/badge/exercises-60-4f46e5?style=for-the-badge)
+![Exercises](https://img.shields.io/badge/exercises-120-4f46e5?style=for-the-badge)
+![Courses](https://img.shields.io/badge/courses-C%2B%2B%20%7C%20Python-3776ab?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/languages-5-f59e0b?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-0891b2?style=for-the-badge)
 
-An interactive browser-based game for learning C++ through detailed explanations, repetition and practical coding exercises.
+An interactive browser game for learning C++ and Python through clear explanations, deliberate repetition and practical coding exercises.
 
-![C++ Knowledge Park preview](assets/preview.jpg)
+![Code Knowledge Park preview](assets/preview.png)
 
 ## About the project
 
-C++ Knowledge Park turns an introductory C++ course into a visual learning route. Each station explains a core concept, breaks syntax into understandable pieces and provides ten coding exercises with instant feedback.
+Code Knowledge Park opens with a course-selection portal and contains two independent learning routes. Each route has six stations, ten coding exercises per station, visible program output, beginner-friendly syntax explanations and precise feedback.
 
-The project is designed for complete beginners. For example, the first lesson explains not only `std::cout`, but also the purpose of `<<`, double quotation marks, semicolons and newline characters.
+The project is designed for complete beginners. New symbols are explained before they are required in an exercise. Progress for C++ and Python is stored separately in the learner's browser.
 
 ## Features
 
-- English interface by default, with instant language switching
-- 60 coding exercises across 6 learning stations
+- Two complete learning routes: C++ and Python
+- 120 coding exercises across 12 stations
 - 10 exercises per topic for deliberate repetition
-- Detailed syntax explanations with code breakdowns
-- A task-specific “Before you code” explanation for all 60 exercises
-- In-browser C++ editor with task-specific starter code
-- Instant validation and actionable hints
-- Line-and-column diagnostics for misspelled C++ words and missing symbols
-- A dedicated program-output console after every code check
-- Task instructions positioned directly beside the editor
-- The next-task button unlocks only after a successful solution
-- Protected global and per-program progress resets with translated Yes/No confirmation dialogs
-- Progress stored locally in the browser
-- Responsive design for desktop and mobile devices
-- Interface and lesson content in five languages:
-  - English
-  - Finnish
-  - Ukrainian
-  - Russian
-  - Thai
+- Detailed syntax breakdowns before practice
+- In-browser code editors with task-specific starter code
+- Visible expected program output after every successful check
+- Actionable diagnostics for misspelled words, missing symbols and common syntax mistakes
+- Previous and next controls beside the code checker
+- Next exercise unlocks only after a successful solution
+- Separate C++ and Python progress stored locally in the browser
+- Protected global and per-station progress resets
+- Responsive layout for desktop and mobile
+- Complete interface in English, Finnish, Ukrainian, Russian and Thai
 
 ## Curriculum
 
-| Station | Topic | Practice |
+| C++ route | Python route | Exercises |
 | --- | --- | ---: |
-| 1 | Program structure and output | 10 exercises |
-| 2 | Variables, types and arithmetic | 10 exercises |
-| 3 | Conditions and loops | 10 exercises |
-| 4 | Functions and return values | 10 exercises |
-| 5 | References and pointers | 10 exercises |
-| 6 | Classes, objects and methods | 10 exercises |
+| Program structure and output | `print`, strings and output | 10 + 10 |
+| Variables, types and arithmetic | Values, variables and conversions | 10 + 10 |
+| Conditions and loops | Conditions, indentation and loops | 10 + 10 |
+| Functions and return values | Functions, parameters and return | 10 + 10 |
+| References and pointers | Lists and dictionaries | 10 + 10 |
+| Classes, objects and methods | Classes, objects and methods | 10 + 10 |
 
 ## Technology
 
@@ -58,20 +52,13 @@ The project is designed for complete beginners. For example, the first lesson ex
 - Browser `localStorage`
 - GitHub Pages
 
-No build step, package manager or external dependency is required.
+The GitHub Pages edition has no build step, package manager or external runtime dependency.
 
 ## Run locally
-
-Clone the repository and open `index.html` in a browser:
 
 ```bash
 git clone https://github.com/YevheniiMalin/cpp-learning-park.git
 cd cpp-learning-park
-```
-
-For a local development server, you can use Python:
-
-```bash
 python -m http.server 8000
 ```
 
@@ -79,7 +66,7 @@ Then open `http://localhost:8000`.
 
 ## Validation model
 
-The browser trainer checks the expected structure and logic of each solution. It does not compile or execute arbitrary C++ programs, so it can provide immediate beginner-friendly feedback without a backend server.
+The trainer checks the expected structure and logic of each solution. It does not execute arbitrary C++ or Python code, so it can provide immediate beginner-friendly feedback without a backend server.
 
 ## License
 
