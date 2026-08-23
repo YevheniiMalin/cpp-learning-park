@@ -28,7 +28,7 @@ The project is designed for complete beginners. For example, the first lesson ex
 - A dedicated program-output console after every code check
 - Task instructions positioned directly beside the editor
 - The next-task button unlocks only after a successful solution
-- A protected progress reset with a translated Yes/No confirmation dialog
+- Protected global and per-program progress resets with translated Yes/No confirmation dialogs
 - Progress stored locally in the browser
 - Responsive design for desktop and mobile devices
 - Interface and lesson content in four languages:

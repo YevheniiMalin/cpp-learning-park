@@ -14,6 +14,7 @@ let pipelineStep = 0;
 let running = true;
 let speed = 1;
 let hintOpen = false;
+let resetTarget = null;
 let results = {};
 let codes = allTasks.map(task => task.starter);
 let completed = [];
@@ -64,10 +65,7 @@ function renderLanguage() {
   byId("mapKicker").textContent = copy.mapKicker;
   byId("routeTitle").textContent = copy.mapTitle;
   byId("mapLead").textContent = copy.mapLead;
-  byId("resetDialogTitle").textContent = copy.resetProgressTitle;
-  byId("resetDialogMessage").textContent = copy.resetProgressMessage;
-  byId("resetDialogNo").textContent = copy.confirmNo;
-  byId("resetDialogYes").textContent = copy.confirmYes;
+  renderResetDialogCopy();
   byId("footerBrand").textContent = copy.brand;
   byId("footerBrandSub").textContent = copy.brandSub;
   byId("footerText").textContent = copy.footer;
@@ -100,17 +98,21 @@ function renderStations() {
   byId("routeCounter").textContent = `${completed.length} / 60`;
   byId("stationGrid").innerHTML = lessons.map((lesson, index) => {
     const count = stationCompleted(index);
-    return `<button class="station-card ${index === activeStation ? "active" : ""} ${count === 10 ? "done" : ""}" data-station="${index}">
-      <span class="station-number">${String(index + 1).padStart(2, "0")}</span><span class="station-tag">${count === 10 ? "✓" : stationTags[index]}</span>
-      <strong>${escapeHtml(lesson.stationTitle)}</strong><small>${escapeHtml(lesson.stationCaption)}</small><span class="station-progress-mini">${count} / 10</span><span class="station-arrow">↗</span>
-    </button>`;
+    return `<div class="station-card-shell">
+      <button class="station-card ${index === activeStation ? "active" : ""} ${count === 10 ? "done" : ""}" data-station="${index}">
+        <span class="station-number">${String(index + 1).padStart(2, "0")}</span><span class="station-tag">${count === 10 ? "✓" : stationTags[index]}</span>
+        <strong>${escapeHtml(lesson.stationTitle)}</strong><small>${escapeHtml(lesson.stationCaption)}</small><span class="station-progress-mini">${count} / 10</span><span class="station-arrow">↗</span>
+      </button>
+      <button class="station-card-reset" data-reset-station="${index}" aria-label="${escapeHtml(`${ui[language].reset}: ${lesson.stationTitle}`)}"><span aria-hidden="true">↺</span>${escapeHtml(ui[language].reset)}</button>
+    </div>`;
   }).join("") + `<button class="station-reset-control" id="mapResetProgress"><span>↺</span><strong>${escapeHtml(ui[language].resetProgress)}</strong><small>${completed.length} / 60 ${escapeHtml(ui[language].completed)}</small></button>`;
   byId("lessonTabs").innerHTML = lessons.map((lesson, index) => {
     const count = stationCompleted(index);
     return `<button role="tab" aria-selected="${index === activeStation}" class="${index === activeStation ? "active" : ""} ${count === 10 ? "done" : ""}" data-tab="${index}"><span>${count === 10 ? "✓" : `${count}/10`}</span>${escapeHtml(lesson.stationTitle)}</button>`;
   }).join("");
   document.querySelectorAll("[data-station]").forEach(button => button.addEventListener("click", () => openStation(Number(button.dataset.station), true)));
-  byId("mapResetProgress").addEventListener("click", openResetDialog);
+  document.querySelectorAll("[data-reset-station]").forEach(button => button.addEventListener("click", () => openResetDialog(Number(button.dataset.resetStation))));
+  byId("mapResetProgress").addEventListener("click", () => openResetDialog("all"));
   document.querySelectorAll("[data-tab]").forEach(button => button.addEventListener("click", () => openStation(Number(button.dataset.tab), false)));
 }
 
@@ -276,7 +278,17 @@ function moveTask(direction) {
 byId("lessonPrev").addEventListener("click", () => moveTask(-1));
 byId("lessonNext").addEventListener("click", () => moveTask(1));
 byId("startButton").addEventListener("click", () => openStation(0, false));
-function openResetDialog() {
+function renderResetDialogCopy() {
+  const copy = ui[language];
+  const stationName = typeof resetTarget === "number" ? lessonText[language][resetTarget].stationTitle : "";
+  byId("resetDialogTitle").textContent = typeof resetTarget === "number" ? copy.resetStationTitle.replace("{station}", stationName) : copy.resetProgressTitle;
+  byId("resetDialogMessage").textContent = typeof resetTarget === "number" ? copy.resetStationMessage : copy.resetProgressMessage;
+  byId("resetDialogNo").textContent = copy.confirmNo;
+  byId("resetDialogYes").textContent = copy.confirmYes;
+}
+function openResetDialog(target = "all") {
+  resetTarget = target;
+  renderResetDialogCopy();
   byId("resetDialog").hidden = false;
   document.body.style.overflow = "hidden";
   byId("resetDialogNo").focus();
@@ -284,6 +296,7 @@ function openResetDialog() {
 function closeResetDialog() {
   byId("resetDialog").hidden = true;
   document.body.style.overflow = "";
+  resetTarget = null;
 }
 function resetAllProgress() {
   codes = allTasks.map(task => task.starter);
@@ -295,9 +308,26 @@ function resetAllProgress() {
   closeResetDialog();
   renderLanguage();
 }
-byId("restartProgress").addEventListener("click", openResetDialog);
+function resetStationProgress(station) {
+  const firstTask = station * 10;
+  const lastTask = firstTask + 10;
+  codes = codes.map((code, index) => index >= firstTask && index < lastTask ? allTasks[index].starter : code);
+  completed = completed.filter(index => index < firstTask || index >= lastTask);
+  for (let index = firstTask; index < lastTask; index += 1) delete results[index];
+  if (activeStation === station) {
+    activeTask = 0;
+    hintOpen = false;
+  }
+  closeResetDialog();
+  renderLanguage();
+}
+function confirmResetProgress() {
+  if (resetTarget === "all") resetAllProgress();
+  else if (typeof resetTarget === "number") resetStationProgress(resetTarget);
+}
+byId("restartProgress").addEventListener("click", () => openResetDialog("all"));
 byId("resetDialogNo").addEventListener("click", closeResetDialog);
-byId("resetDialogYes").addEventListener("click", resetAllProgress);
+byId("resetDialogYes").addEventListener("click", confirmResetProgress);
 byId("resetDialog").addEventListener("click", event => { if (event.target === byId("resetDialog")) closeResetDialog(); });
 document.addEventListener("keydown", event => { if (event.key === "Escape" && !byId("resetDialog").hidden) closeResetDialog(); });
 
