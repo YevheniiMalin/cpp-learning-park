@@ -2,7 +2,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://yevheniimalin.github.io/cpp-learning-park/)
 ![Exercises](https://img.shields.io/badge/exercises-60-4f46e5?style=for-the-badge)
-![Languages](https://img.shields.io/badge/languages-4-f59e0b?style=for-the-badge)
+![Languages](https://img.shields.io/badge/languages-5-f59e0b?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-0891b2?style=for-the-badge)
 
 An interactive browser-based game for learning C++ through detailed explanations, repetition and practical coding exercises.
@@ -31,11 +31,12 @@ The project is designed for complete beginners. For example, the first lesson ex
 - Protected global and per-program progress resets with translated Yes/No confirmation dialogs
 - Progress stored locally in the browser
 - Responsive design for desktop and mobile devices
-- Interface and lesson content in four languages:
+- Interface and lesson content in five languages:
   - English
   - Finnish
   - Ukrainian
   - Russian
+  - Thai
 
 ## Curriculum
 

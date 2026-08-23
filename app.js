@@ -45,6 +45,7 @@ function renderLanguage() {
   document.documentElement.lang = language;
   byId("brandText").textContent = copy.brand;
   byId("brandSub").textContent = copy.brandSub;
+  byId("languageSwitcher").setAttribute("aria-label", copy.language);
   byId("routeLabel").textContent = copy.route;
   byId("eyebrow").textContent = copy.eyebrow;
   byId("heroTop").textContent = copy.heroTop;
