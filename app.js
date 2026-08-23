@@ -165,11 +165,10 @@ function renderLesson() {
   byId("checkCode").innerHTML = `${escapeHtml(copy.checkCode)} <span>▶</span>`;
   byId("checksLabel").textContent = copy.checks;
   byId("testDisclaimer").textContent = copy.checkDisclaimer;
-  byId("lessonPrev").textContent = `← ${academy.previousTask}`;
+  byId("lessonPrev").innerHTML = `<span>←</span>${escapeHtml(academy.previousTask)}`;
   byId("lessonPrev").disabled = index === 0;
-  byId("lessonNext").textContent = `${academy.nextTask} →`;
-  byId("lessonNext").disabled = index === 59;
-  byId("lessonProgress").textContent = `${completed.length} / 60 ${academy.allTasks}`;
+  byId("lessonNext").innerHTML = `${escapeHtml(academy.nextTask)}<span>→</span>`;
+  byId("lessonNext").disabled = index === 59 || !passed;
   byId("testConsole").classList.toggle("success", passed);
   renderTests();
 }
@@ -184,6 +183,7 @@ function renderTests() {
   const index = taskIndex();
   const current = results[index];
   const passed = completed.includes(index);
+  byId("lessonNext").disabled = index === 59 || !passed;
   byId("testConsole").classList.toggle("success", passed);
   byId("testScore").textContent = current ? `${current.filter(Boolean).length} / 3` : "";
   byId("testList").innerHTML = academy.genericChecks.map((check, checkIndex) => {
@@ -229,7 +229,6 @@ byId("codeEditor").addEventListener("input", event => {
   renderStations();
   renderProgress();
   byId("stageProgressLabel").textContent = `${academyUi[language].stageProgress}: ${stationCompleted(activeStation)} / 10`;
-  byId("lessonProgress").textContent = `${completed.length} / 60 ${academyUi[language].allTasks}`;
   saveProgress();
 });
 
@@ -257,7 +256,7 @@ function moveTask(direction) {
   activeTask = next % 10;
   hintOpen = false;
   renderLanguage();
-  setTimeout(() => byId("lesson").scrollIntoView({ behavior: "smooth", block: "start" }), 20);
+  setTimeout(() => byId("practice").scrollIntoView({ behavior: "smooth", block: "start" }), 20);
 }
 byId("lessonPrev").addEventListener("click", () => moveTask(-1));
 byId("lessonNext").addEventListener("click", () => moveTask(1));
