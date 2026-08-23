@@ -1,6 +1,7 @@
 # Code Knowledge Park
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://yevheniimalin.github.io/cpp-learning-park/)
+[![Live App](https://img.shields.io/badge/Live%20App-Open%20Course-2ea44f?style=for-the-badge)](https://cpp-learning-park.malevge1985.chatgpt.site/)
+[![Static Demo](https://img.shields.io/badge/Static%20Demo-GitHub%20Pages-555?style=for-the-badge&logo=github)](https://yevheniimalin.github.io/cpp-learning-park/)
 ![Exercises](https://img.shields.io/badge/exercises-120-4f46e5?style=for-the-badge)
 ![Courses](https://img.shields.io/badge/courses-C%2B%2B%20%7C%20Python-3776ab?style=for-the-badge)
 ![Languages](https://img.shields.io/badge/languages-5-f59e0b?style=for-the-badge)
@@ -14,7 +15,7 @@ An interactive browser game for learning C++ and Python through clear explanatio
 
 Code Knowledge Park opens with a course-selection portal and contains two independent learning routes. Each route has six stations, ten coding exercises per station, visible program output, beginner-friendly syntax explanations and precise feedback.
 
-The project is designed for complete beginners. New symbols are explained before they are required in an exercise. Progress for C++ and Python is stored separately in the learner's browser.
+The project is designed for complete beginners. New symbols are explained before they are required in an exercise. Courses remain fully usable without an account. The hosted edition also provides optional accounts and cross-device progress synchronization.
 
 ## Features
 
@@ -27,7 +28,10 @@ The project is designed for complete beginners. New symbols are explained before
 - Actionable diagnostics for misspelled words, missing symbols and common syntax mistakes
 - Previous and next controls beside the code checker
 - Next exercise unlocks only after a successful solution
-- Separate C++ and Python progress stored locally in the browser
+- Guest mode with separate C++ and Python progress stored locally in the browser
+- Optional email and password accounts with cross-device cloud synchronization
+- Automatic migration of local progress after sign-in
+- Administrator dashboard for issuing accounts, pausing synchronization and viewing progress
 - Protected global and per-station progress resets
 - Responsive layout for desktop and mobile
 - Complete interface in English, Finnish, Ukrainian, Russian and Thai
@@ -50,9 +54,10 @@ The project is designed for complete beginners. New symbols are explained before
 - Vanilla JavaScript
 - Canvas animation
 - Browser `localStorage`
+- Supabase Auth and PostgreSQL with Row Level Security in the hosted edition
 - GitHub Pages
 
-The GitHub Pages edition has no build step, package manager or external runtime dependency.
+The GitHub Pages edition remains a dependency-free static demo with device-local progress. The primary hosted application adds optional account and synchronization features while keeping every course available to guests.
 
 ## Run locally
 
