@@ -28,6 +28,7 @@ var CppParkContent = (() => {
     lessonText: () => lessonText,
     taskGroups: () => taskGroups,
     taskInstructions: () => taskInstructions,
+    taskOutputs: () => taskOutputs,
     ui: () => ui
   });
 
@@ -665,7 +666,13 @@ int main() {
       stagePassed: "\u0412\u0441\u0435 10 \u0437\u0430\u0434\u0430\u043D\u0438\u0439 \u044D\u0442\u043E\u0439 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u044B.",
       genericChecks: ["\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0430 \u043D\u0443\u0436\u043D\u0430\u044F \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044F", "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u0438 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u044B \u0443\u043A\u0430\u0437\u0430\u043D\u044B \u0432\u0435\u0440\u043D\u043E", "\u0420\u0435\u0448\u0435\u043D\u0438\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043E \u0438 \u0441\u0432\u044F\u0437\u0430\u043D\u043E \u0441 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u043E\u0439"],
       stageProgress: "\u041F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-      allTasks: "\u0437\u0430\u0434\u0430\u043D\u0438\u0439 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E"
+      allTasks: "\u0437\u0430\u0434\u0430\u043D\u0438\u0439 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E",
+      outputTitle: "\u0412\u042B\u0412\u041E\u0414 \u041F\u0420\u041E\u0413\u0420\u0410\u041C\u041C\u042B",
+      outputWaiting: "\u041D\u0430\u0436\u043C\u0438 \xAB\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C \u043A\u043E\u0434\xBB, \u0447\u0442\u043E\u0431\u044B \u0443\u0432\u0438\u0434\u0435\u0442\u044C \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442.",
+      outputFailed: "\u0412\u044B\u0432\u043E\u0434 \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0435\u043D. \u0418\u0441\u043F\u0440\u0430\u0432\u044C \u043E\u0442\u043C\u0435\u0447\u0435\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0438 \u0437\u0430\u043F\u0443\u0441\u0442\u0438 \u043A\u043E\u0434 \u0435\u0449\u0451 \u0440\u0430\u0437.",
+      noConsoleOutput: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0430\u0441\u044C \u0431\u0435\u0437 \u0432\u044B\u0432\u043E\u0434\u0430 \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u044C.",
+      exitCode: "\u041A\u043E\u0434 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F",
+      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D \u043F\u043E\u0441\u043B\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u044B \u0438 \u043B\u043E\u0433\u0438\u043A\u0438 \u0440\u0435\u0448\u0435\u043D\u0438\u044F."
     },
     uk: {
       task: "\u0417\u0430\u0432\u0434\u0430\u043D\u043D\u044F",
@@ -683,7 +690,13 @@ int main() {
       stagePassed: "\u0423\u0441\u0456 10 \u0437\u0430\u0432\u0434\u0430\u043D\u044C \u0446\u0456\u0454\u0457 \u0441\u0442\u0430\u043D\u0446\u0456\u0457 \u0432\u0438\u043A\u043E\u043D\u0430\u043D\u043E.",
       genericChecks: ["\u0412\u0438\u043A\u043E\u0440\u0438\u0441\u0442\u0430\u043D\u043E \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u0443 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0456\u044E", "\u0417\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u0442\u0430 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u0438 \u0432\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E", "\u0420\u043E\u0437\u0432\u2019\u044F\u0437\u0430\u043D\u043D\u044F \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043E \u0439 \u043F\u043E\u0432\u2019\u044F\u0437\u0430\u043D\u043E \u0437 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043E\u044E"],
       stageProgress: "\u041F\u0440\u043E\u0433\u0440\u0435\u0441 \u0441\u0442\u0430\u043D\u0446\u0456\u0457",
-      allTasks: "\u0437\u0430\u0432\u0434\u0430\u043D\u044C \u0432\u0438\u043A\u043E\u043D\u0430\u043D\u043E"
+      allTasks: "\u0437\u0430\u0432\u0434\u0430\u043D\u044C \u0432\u0438\u043A\u043E\u043D\u0430\u043D\u043E",
+      outputTitle: "\u0412\u0418\u0412\u0415\u0414\u0415\u041D\u041D\u042F \u041F\u0420\u041E\u0413\u0420\u0410\u041C\u0418",
+      outputWaiting: "\u041D\u0430\u0442\u0438\u0441\u043D\u0438 \xAB\u041F\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438 \u043A\u043E\u0434\xBB, \u0449\u043E\u0431 \u043F\u043E\u0431\u0430\u0447\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442.",
+      outputFailed: "\u0412\u0438\u0432\u0435\u0434\u0435\u043D\u043D\u044F \u043D\u0435 \u043E\u0442\u0440\u0438\u043C\u0430\u043D\u043E. \u0412\u0438\u043F\u0440\u0430\u0432 \u043F\u043E\u0437\u043D\u0430\u0447\u0435\u043D\u0456 \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 \u0442\u0430 \u0437\u0430\u043F\u0443\u0441\u0442\u0438 \u043A\u043E\u0434 \u0449\u0435 \u0440\u0430\u0437.",
+      noConsoleOutput: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B\u0430\u0441\u044F \u0431\u0435\u0437 \u0432\u0438\u0432\u0435\u0434\u0435\u043D\u043D\u044F \u0432 \u043A\u043E\u043D\u0441\u043E\u043B\u044C.",
+      exitCode: "\u041A\u043E\u0434 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u044F",
+      outputNote: "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u043A\u0430\u0437\u0430\u043D\u043E \u043F\u0456\u0441\u043B\u044F \u043F\u0435\u0440\u0435\u0432\u0456\u0440\u043A\u0438 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0438 \u0442\u0430 \u043B\u043E\u0433\u0456\u043A\u0438 \u0440\u043E\u0437\u0432\u2019\u044F\u0437\u0430\u043D\u043D\u044F."
     },
     fi: {
       task: "Teht\xE4v\xE4",
@@ -701,7 +714,13 @@ int main() {
       stagePassed: "Kaikki t\xE4m\xE4n aseman 10 teht\xE4v\xE4\xE4 on suoritettu.",
       genericChecks: ["Tarvittavaa rakennetta k\xE4ytet\xE4\xE4n", "Arvot ja operaattorit ovat oikein", "Ratkaisu on valmis ja liitetty ohjelmaan"],
       stageProgress: "Aseman edistyminen",
-      allTasks: "teht\xE4v\xE4\xE4 suoritettu"
+      allTasks: "teht\xE4v\xE4\xE4 suoritettu",
+      outputTitle: "OHJELMAN TULOSTE",
+      outputWaiting: "N\xE4et tuloksen painamalla Tarkista koodi.",
+      outputFailed: "Tulostetta ei saatu. Korjaa merkityt tarkistukset ja suorita koodi uudelleen.",
+      noConsoleOutput: "Ohjelma p\xE4\xE4ttyi ilman konsolitulostetta.",
+      exitCode: "Paluukoodi",
+      outputNote: "Tulos n\xE4ytet\xE4\xE4n ratkaisun rakenteen ja logiikan tarkistuksen j\xE4lkeen."
     },
     en: {
       task: "Task",
@@ -719,7 +738,13 @@ int main() {
       stagePassed: "All 10 tasks at this station are complete.",
       genericChecks: ["The required construct is used", "Values and operators are correct", "The solution is complete and connected to the program"],
       stageProgress: "Station progress",
-      allTasks: "tasks completed"
+      allTasks: "tasks completed",
+      outputTitle: "PROGRAM OUTPUT",
+      outputWaiting: "Press Check code to see the result.",
+      outputFailed: "No output was produced. Fix the marked checks and run the code again.",
+      noConsoleOutput: "The program finished without console output.",
+      exitCode: "Exit code",
+      outputNote: "The result is shown after the solution structure and logic are validated."
     }
   };
   var lessonGuides = {
@@ -1487,6 +1512,80 @@ public:
 private:
     int seats_;
 };`, validate: (code) => [/class\s+Ride\s*\{[\s\S]*public\s*:/.test(code), /Ride\s*\(\s*int\s+seats\s*\)\s*:\s*seats_\s*\(\s*seats\s*\)/.test(code), /int\s+capacity\s*\(\s*\)\s*const\s*\{\s*return\s+seats_\s*;\s*\}/.test(code)] }
+    ]
+  ];
+  var taskOutputs = [
+    [
+      "Hello, C++!",
+      "My first program",
+      "Score: 10",
+      "Line 1\nLine 2",
+      "AB",
+      "42",
+      "5",
+      "Cars: 3",
+      "Ready",
+      "I can code!"
+    ],
+    [
+      "20",
+      "4.5",
+      "1",
+      "Alex",
+      "15",
+      "24",
+      "12",
+      "2.5",
+      "8",
+      "30"
+    ],
+    [
+      "Adult",
+      "Pass",
+      "Correct",
+      "Allowed",
+      "123",
+      "01234",
+      "012",
+      "15",
+      "1245",
+      "321"
+    ],
+    [
+      "Hi",
+      "Alex",
+      "8",
+      "8",
+      "1",
+      "36",
+      "9",
+      "7",
+      "6",
+      "5"
+    ],
+    [
+      "20",
+      "6",
+      "21",
+      "0x...",
+      "42",
+      "25",
+      "",
+      "Ada",
+      "5",
+      "8"
+    ],
+    [
+      "Hi",
+      "10",
+      "",
+      "",
+      "24",
+      "1",
+      "25",
+      "1030",
+      "20",
+      "24"
     ]
   ];
   return __toCommonJS(static_content_exports);

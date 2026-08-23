@@ -22,6 +22,8 @@ The project is designed for complete beginners. For example, the first lesson ex
 - Detailed syntax explanations with code breakdowns
 - In-browser C++ editor with task-specific starter code
 - Instant validation and actionable hints
+- A dedicated program-output console after every code check
+- Task instructions positioned directly beside the editor
 - Progress stored locally in the browser
 - Responsive design for desktop and mobile devices
 - Interface and lesson content in four languages:

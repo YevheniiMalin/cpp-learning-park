@@ -32,7 +32,7 @@
       <p class="eyebrow"><span>●</span> <b id="eyebrow"></b></p>
       <h1><span id="heroTop"></span><br><em id="heroBottom"></em></h1>
       <p class="lead" id="heroLead"></p>
-      <div class="hero-actions"><a class="primary-button" href="#lesson" id="startButton"></a><button class="text-button" id="rideToggle"><span class="round-icon">Ⅱ</span><b></b></button></div>
+      <div class="hero-actions"><a class="primary-button" href="#practice" id="startButton"></a><button class="text-button" id="rideToggle"><span class="round-icon">Ⅱ</span><b></b></button></div>
       <div class="facts"><div><strong>60</strong><span id="tasksLabel"></span></div><div><strong>4</strong><span id="languagesLabel"></span></div><div><strong>10×</strong><span id="feedbackLabel"></span></div></div>
     </div>
     <div class="ride-card">
@@ -56,11 +56,11 @@
   <section class="lesson-section" id="lesson" aria-labelledby="lessonTitle">
     <div class="lesson-tabs" id="lessonTabs" role="tablist"></div>
     <div class="task-selector"><div><span id="chooseTaskLabel"></span><strong id="stageProgressLabel"></strong></div><div class="task-dots" id="taskDots"></div></div>
-    <div class="learning-layout">
+    <div class="learning-layout" id="practice">
       <article class="lesson-copy">
         <p class="kicker" id="lessonKicker"></p><h2 id="lessonTitle"></h2><p class="lesson-subtitle" id="lessonSubtitle"></p>
-        <div class="guide-card"><p class="theory-label" id="theoryLabel"></p><p class="lesson-body" id="guideIntro"></p><div class="syntax-breakdown"><span id="syntaxTitle"></span><code id="syntaxExample"></code><div id="syntaxParts"></div></div><div class="remember-box"><strong id="rememberLabel"></strong><ul id="rememberList"></ul></div></div>
         <div class="mission-card"><p id="missionLabel"></p><strong id="missionText"></strong><small class="repetition-note" id="repetitionNote"></small><span class="requirement-title" id="requirementsLabel"></span><ol id="requirementList"></ol><button class="hint-toggle" id="hintToggle"><b></b><span>+</span></button><div class="hint-box" id="hintBox" hidden></div></div>
+        <div class="guide-card"><p class="theory-label" id="theoryLabel"></p><p class="lesson-body" id="guideIntro"></p><div class="syntax-breakdown"><span id="syntaxTitle"></span><code id="syntaxExample"></code><div id="syntaxParts"></div></div><div class="remember-box"><strong id="rememberLabel"></strong><ul id="rememberList"></ul></div></div>
       </article>
       <div class="workbench">
         <div class="code-window interactive">
@@ -68,6 +68,7 @@
           <div class="editor-shell"><div class="line-numbers" id="lineNumbers" aria-hidden="true"></div><textarea id="codeEditor" spellcheck="false"></textarea></div>
           <div class="editor-actions"><button class="reset-button" id="resetCurrent"></button><button class="run-button" id="checkCode"></button></div>
         </div>
+        <div class="program-output" id="programOutput" aria-live="polite"><div class="program-output-heading"><span id="programOutputTitle"></span><small id="programOutputStatus"></small></div><pre id="programOutputText"></pre><p id="programOutputNote" hidden></p></div>
         <div class="test-console" id="testConsole"><div class="test-heading"><span id="checksLabel"></span><strong id="testScore"></strong></div><div class="test-list" id="testList"></div><div id="testMessage"></div><p class="test-disclaimer" id="testDisclaimer"></p></div>
       </div>
     </div>

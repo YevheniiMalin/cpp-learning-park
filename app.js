@@ -1,4 +1,4 @@
-const { academyUi, languageOptions, lessonGuides, lessonText, taskGroups, taskInstructions, ui } = CppParkContent;
+const { academyUi, languageOptions, lessonGuides, lessonText, taskGroups, taskInstructions, taskOutputs, ui } = CppParkContent;
 const allTasks = taskGroups.flat();
 const pipelineMeta = [
   { ext: ".cpp", color: "#ffcc66" }, { ext: "#include", color: "#ef7c65" },
@@ -193,6 +193,13 @@ function renderTests() {
   }).join("");
   const successText = stationCompleted(activeStation) === 10 ? academy.stagePassed : academy.taskPassed;
   byId("testMessage").innerHTML = current ? `<div class="test-message ${passed ? "success" : ""}"><strong>${escapeHtml(passed ? successText : copy.fixAndRetry)}</strong></div>` : "";
+  byId("programOutput").classList.toggle("success", Boolean(current && passed));
+  byId("programOutput").classList.toggle("error", Boolean(current && !passed));
+  byId("programOutputTitle").textContent = academy.outputTitle;
+  byId("programOutputStatus").textContent = current ? `${academy.exitCode}: ${passed ? 0 : 1}` : "...";
+  byId("programOutputText").textContent = !current ? academy.outputWaiting : passed ? (taskOutputs[activeStation][activeTask] || academy.noConsoleOutput) : academy.outputFailed;
+  byId("programOutputNote").hidden = !(current && passed);
+  byId("programOutputNote").textContent = academy.outputNote;
 }
 
 function renderProgress() {
