@@ -1,4 +1,4 @@
-const { academyUi, languageOptions, lessonGuides, lessonText, taskCheckHints, taskGroups, taskInstructions, taskOutputs, ui } = CppParkContent;
+const { academyUi, buildFailureOutput, languageOptions, lessonGuides, lessonText, taskCheckHints, taskGroups, taskInstructions, taskOutputs, ui } = CppParkContent;
 const allTasks = taskGroups.flat();
 const pipelineMeta = [
   { ext: ".cpp", color: "#ffcc66" }, { ext: "#include", color: "#ef7c65" },
@@ -27,20 +27,6 @@ try {
 
 const byId = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
-const buildFailureOutput = (code, checks, academy) => {
-  const issues = [];
-  const quoteCount = [...code].reduce((count, character, index) => count + (character === '"' && code[index - 1] !== "\\" ? 1 : 0), 0);
-  const structure = code.replace(/\/\/.*$/gm, "").replace(/"(?:\\.|[^"\\])*"/g, "\"\"").replace(/'(?:\\.|[^'\\])*'/g, "''");
-  if (/std::cout\b(?!\s*<<)/.test(code)) issues.push(academy.diagnosticInsertion);
-  if (quoteCount % 2 !== 0) issues.push(academy.diagnosticQuotes);
-  if ((structure.match(/\{/g) || []).length !== (structure.match(/\}/g) || []).length) issues.push(academy.diagnosticBraces);
-  if ((structure.match(/\(/g) || []).length !== (structure.match(/\)/g) || []).length) issues.push(academy.diagnosticParentheses);
-  if (code.split("\n").some(line => { const clean = line.replace(/\/\/.*$/, "").trim(); const coutIndex = clean.indexOf("std::cout"); return coutIndex >= 0 && !clean.slice(coutIndex).includes(";"); })) issues.push(academy.diagnosticSemicolon);
-  checks.forEach((passed, index) => {
-    if (!passed) issues.push(`${academy.diagnosticExpected}: ${taskCheckHints[activeStation][activeTask][index]}`);
-  });
-  return `${academy.diagnosticTitle}\n${[...new Set(issues)].map(issue => `• ${issue}`).join("\n")}`;
-};
 const taskIndex = () => activeStation * 10 + activeTask;
 const stationCompleted = station => completed.filter(index => Math.floor(index / 10) === station).length;
 const currentTask = () => taskGroups[activeStation][activeTask];
@@ -211,7 +197,14 @@ function renderTests() {
   byId("programOutput").classList.toggle("error", Boolean(current && !passed));
   byId("programOutputTitle").textContent = academy.outputTitle;
   byId("programOutputStatus").textContent = current ? `${academy.exitCode}: ${passed ? 0 : 1}` : "...";
-  byId("programOutputText").textContent = !current ? academy.outputWaiting : passed ? (taskOutputs[activeStation][activeTask] || academy.noConsoleOutput) : buildFailureOutput(codes[index], current, academy);
+  byId("programOutputText").textContent = !current ? academy.outputWaiting : passed ? (taskOutputs[activeStation][activeTask] || academy.noConsoleOutput) : buildFailureOutput({
+    code: codes[index],
+    checks: current,
+    checkHints: taskCheckHints[activeStation][activeTask],
+    starter: currentTask().starter,
+    solutionHint: currentTask().hint,
+    copy: academy,
+  });
   byId("programOutputNote").hidden = !(current && passed);
   byId("programOutputNote").textContent = academy.outputNote;
 }

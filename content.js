@@ -22,6 +22,7 @@ var CppParkContent = (() => {
   var static_content_exports = {};
   __export(static_content_exports, {
     academyUi: () => academyUi,
+    buildFailureOutput: () => buildFailureOutput,
     exercises: () => exercises,
     languageOptions: () => languageOptions,
     lessonGuides: () => lessonGuides,
@@ -680,7 +681,11 @@ int main() {
       diagnosticQuotes: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u0432\u043E\u0439\u043D\u044B\u0445 \u043A\u0430\u0432\u044B\u0447\u0435\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442. \u041F\u0440\u043E\u0432\u0435\u0440\u044C, \u0447\u0442\u043E \u043A\u0430\u0436\u0434\u0430\u044F \u0441\u0442\u0440\u043E\u043A\u0430 \u0437\u0430\u043A\u0440\u044B\u0442\u0430.",
       diagnosticBraces: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0438 \u0437\u0430\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0444\u0438\u0433\u0443\u0440\u043D\u044B\u0445 \u0441\u043A\u043E\u0431\u043E\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442.",
       diagnosticParentheses: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0442\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u0438 \u0437\u0430\u043A\u0440\u044B\u0432\u0430\u044E\u0449\u0438\u0445 \u043A\u0440\u0443\u0433\u043B\u044B\u0445 \u0441\u043A\u043E\u0431\u043E\u043A \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442.",
-      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u0434\u043E\u043B\u0436\u043D\u0430 \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u0442\u043E\u0447\u043A\u043E\u0439 \u0441 \u0437\u0430\u043F\u044F\u0442\u043E\u0439 ;."
+      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u0434\u043E\u043B\u0436\u043D\u0430 \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u0442\u043E\u0447\u043A\u043E\u0439 \u0441 \u0437\u0430\u043F\u044F\u0442\u043E\u0439 ;.",
+      diagnosticLocation: "\u0421\u0442\u0440\u043E\u043A\u0430 {line}, \u0441\u0438\u043C\u0432\u043E\u043B {column}",
+      diagnosticMisspelled: "\u0441\u043B\u043E\u0432\u043E `{wrong}` \u043D\u0430\u043F\u0438\u0441\u0430\u043D\u043E \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E. \u041D\u0430\u043F\u0438\u0448\u0438 `{right}`.",
+      diagnosticNamespace: "\u043F\u043E\u0441\u043B\u0435 `std` \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u0442\u043E\u044F\u0442\u044C \u0434\u0432\u0430 \u0434\u0432\u043E\u0435\u0442\u043E\u0447\u0438\u044F `::`.",
+      diagnosticTextQuotes: "\u0442\u0435\u043A\u0441\u0442 \u0438\u0437 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u043D\u0443\u0436\u043D\u043E \u043F\u0438\u0441\u0430\u0442\u044C \u0432 \u0434\u0432\u043E\u0439\u043D\u044B\u0445 \u043A\u0430\u0432\u044B\u0447\u043A\u0430\u0445."
     },
     uk: {
       task: "\u0417\u0430\u0432\u0434\u0430\u043D\u043D\u044F",
@@ -711,7 +716,11 @@ int main() {
       diagnosticQuotes: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u043F\u043E\u0434\u0432\u0456\u0439\u043D\u0438\u0445 \u043B\u0430\u043F\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F. \u041F\u0435\u0440\u0435\u0432\u0456\u0440, \u0449\u043E \u043A\u043E\u0436\u0435\u043D \u0440\u044F\u0434\u043E\u043A \u0437\u0430\u043A\u0440\u0438\u0442\u043E.",
       diagnosticBraces: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0432\u0456\u0434\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0456 \u0437\u0430\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0444\u0456\u0433\u0443\u0440\u043D\u0438\u0445 \u0434\u0443\u0436\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F.",
       diagnosticParentheses: "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0432\u0456\u0434\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u0456 \u0437\u0430\u043A\u0440\u0438\u0432\u0430\u043B\u044C\u043D\u0438\u0445 \u043A\u0440\u0443\u0433\u043B\u0438\u0445 \u0434\u0443\u0436\u043E\u043A \u043D\u0435 \u0437\u0431\u0456\u0433\u0430\u0454\u0442\u044C\u0441\u044F.",
-      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u043C\u0430\u0454 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438\u0441\u044F \u043A\u0440\u0430\u043F\u043A\u043E\u044E \u0437 \u043A\u043E\u043C\u043E\u044E ;."
+      diagnosticSemicolon: "\u041A\u043E\u043C\u0430\u043D\u0434\u0430 std::cout \u043C\u0430\u0454 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438\u0441\u044F \u043A\u0440\u0430\u043F\u043A\u043E\u044E \u0437 \u043A\u043E\u043C\u043E\u044E ;.",
+      diagnosticLocation: "\u0420\u044F\u0434\u043E\u043A {line}, \u0441\u0438\u043C\u0432\u043E\u043B {column}",
+      diagnosticMisspelled: "\u0441\u043B\u043E\u0432\u043E `{wrong}` \u043D\u0430\u043F\u0438\u0441\u0430\u043D\u043E \u0437 \u043F\u043E\u043C\u0438\u043B\u043A\u043E\u044E. \u041D\u0430\u043F\u0438\u0448\u0438 `{right}`.",
+      diagnosticNamespace: "\u043F\u0456\u0441\u043B\u044F `std` \u043C\u0430\u044E\u0442\u044C \u0441\u0442\u043E\u044F\u0442\u0438 \u0434\u0432\u0456 \u0434\u0432\u043E\u043A\u0440\u0430\u043F\u043A\u0438 `::`.",
+      diagnosticTextQuotes: "\u0442\u0435\u043A\u0441\u0442 \u0456\u0437 \u043A\u0456\u043B\u044C\u043A\u043E\u0445 \u0441\u0438\u043C\u0432\u043E\u043B\u0456\u0432 \u043F\u043E\u0442\u0440\u0456\u0431\u043D\u043E \u043F\u0438\u0441\u0430\u0442\u0438 \u0432 \u043F\u043E\u0434\u0432\u0456\u0439\u043D\u0438\u0445 \u043B\u0430\u043F\u043A\u0430\u0445."
     },
     fi: {
       task: "Teht\xE4v\xE4",
@@ -742,7 +751,11 @@ int main() {
       diagnosticQuotes: "Lainausmerkkien m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4. Tarkista, ett\xE4 jokainen merkkijono on suljettu.",
       diagnosticBraces: "Avaavien ja sulkevien aaltosulkeiden m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4.",
       diagnosticParentheses: "Avaavien ja sulkevien kaarisulkeiden m\xE4\xE4r\xE4 ei t\xE4sm\xE4\xE4.",
-      diagnosticSemicolon: "std::cout-lauseen lopussa pit\xE4\xE4 olla puolipiste ;."
+      diagnosticSemicolon: "std::cout-lauseen lopussa pit\xE4\xE4 olla puolipiste ;.",
+      diagnosticLocation: "Rivi {line}, merkki {column}",
+      diagnosticMisspelled: "sana `{wrong}` on kirjoitettu v\xE4\xE4rin. Kirjoita `{right}`.",
+      diagnosticNamespace: "`std`-sanan j\xE4lkeen tarvitaan kaksi kaksoispistett\xE4 `::`.",
+      diagnosticTextQuotes: "Usean merkin teksti pit\xE4\xE4 kirjoittaa lainausmerkkeihin."
     },
     en: {
       task: "Task",
@@ -773,7 +786,11 @@ int main() {
       diagnosticQuotes: "The double quotation marks do not match. Check that every string is closed.",
       diagnosticBraces: "The number of opening and closing braces does not match.",
       diagnosticParentheses: "The number of opening and closing parentheses does not match.",
-      diagnosticSemicolon: "The std::cout statement must end with a semicolon ;."
+      diagnosticSemicolon: "The std::cout statement must end with a semicolon ;.",
+      diagnosticLocation: "Line {line}, character {column}",
+      diagnosticMisspelled: "the word `{wrong}` is misspelled. Write `{right}`.",
+      diagnosticNamespace: "two colons `::` are required after `std`.",
+      diagnosticTextQuotes: "text containing several characters must use double quotation marks."
     }
   };
   var lessonGuides = {
@@ -1107,6 +1124,190 @@ int main() {
         "Build the complete Ride class: constructor, private seats_, and const capacity()."
       ]
     ]
+  };
+
+  // app/diagnostics.ts
+  var cppWords = /* @__PURE__ */ new Set([
+    "alignas",
+    "alignof",
+    "and",
+    "asm",
+    "auto",
+    "bool",
+    "break",
+    "case",
+    "catch",
+    "char",
+    "class",
+    "const",
+    "constexpr",
+    "continue",
+    "default",
+    "delete",
+    "do",
+    "double",
+    "else",
+    "endl",
+    "enum",
+    "explicit",
+    "false",
+    "float",
+    "for",
+    "friend",
+    "if",
+    "include",
+    "inline",
+    "int",
+    "iostream",
+    "long",
+    "main",
+    "namespace",
+    "new",
+    "nullptr",
+    "operator",
+    "private",
+    "protected",
+    "public",
+    "return",
+    "short",
+    "signed",
+    "sizeof",
+    "static",
+    "std",
+    "string",
+    "struct",
+    "switch",
+    "template",
+    "this",
+    "throw",
+    "true",
+    "try",
+    "typedef",
+    "typename",
+    "union",
+    "unsigned",
+    "using",
+    "virtual",
+    "void",
+    "volatile",
+    "while",
+    "cout"
+  ]);
+  var maskNoise = (source) => source.replace(/\/\/.*$/gm, (value) => " ".repeat(value.length)).replace(/"(?:\\.|[^"\\])*"/g, (value) => " ".repeat(value.length)).replace(/'(?:\\.|[^'\\])*'/g, (value) => " ".repeat(value.length));
+  var editDistance = (left, right) => {
+    const row = Array.from({ length: right.length + 1 }, (_, index) => index);
+    for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+      let diagonal = row[0];
+      row[0] = leftIndex;
+      for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+        const previous = row[rightIndex];
+        row[rightIndex] = Math.min(
+          row[rightIndex] + 1,
+          row[rightIndex - 1] + 1,
+          diagonal + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1)
+        );
+        diagonal = previous;
+      }
+    }
+    return row[right.length];
+  };
+  var fill = (template, values) => Object.entries(values).reduce((text, [key, value]) => text.replaceAll(`{${key}}`, String(value)), template);
+  var locationText = (copy, line, column) => fill(copy.diagnosticLocation, { line, column });
+  var buildFailureOutput = ({ code, checks, checkHints, starter, solutionHint, copy }) => {
+    const issues = [];
+    const explainedTargets = /* @__PURE__ */ new Set();
+    const expectedSource = `${starter}
+${solutionHint}
+${checkHints.join("\n")}`;
+    const expectedCode = maskNoise(expectedSource);
+    const exactExpectedWords = new Set(expectedCode.match(/\b[A-Za-z_][A-Za-z0-9_]*\b/g) || []);
+    const variantsByLower = /* @__PURE__ */ new Map();
+    exactExpectedWords.forEach((word) => {
+      const lower = word.toLowerCase();
+      if (!variantsByLower.has(lower)) variantsByLower.set(lower, /* @__PURE__ */ new Set());
+      variantsByLower.get(lower)?.add(word);
+    });
+    const fuzzyCandidates = [...exactExpectedWords].filter((word) => word.length >= 4 || cppWords.has(word.toLowerCase()));
+    const expectedQualified = [...expectedSource.matchAll(/\bstd\s*::\s*([A-Za-z_][A-Za-z0-9_]*)/g)].map((match) => match[1]);
+    const handledPositions = /* @__PURE__ */ new Set();
+    const addMisspelling = (wrong, right, line, column) => {
+      const location = locationText(copy, line, column);
+      issues.push(`${location}: ${fill(copy.diagnosticMisspelled, { wrong, right })}`);
+      explainedTargets.add(right);
+      handledPositions.add(`${line}:${column}`);
+    };
+    code.split("\n").forEach((lineText, lineIndex) => {
+      const lineNumber = lineIndex + 1;
+      const namespaceMatch = /\bstd\s*:(?!:)|\bstd\s+(?=cout|string|endl)/.exec(lineText);
+      if (namespaceMatch) {
+        const column = (namespaceMatch.index ?? 0) + 1;
+        issues.push(`${locationText(copy, lineNumber, column)}: ${copy.diagnosticNamespace}`);
+        explainedTargets.add("std::");
+      }
+      for (const match of lineText.matchAll(/\bstd\s*::\s*([A-Za-z_][A-Za-z0-9_]*)/g)) {
+        const actual = match[1];
+        if (expectedQualified.includes(actual)) continue;
+        const ranked = expectedQualified.map((expected) => ({ expected, distance: editDistance(actual.toLowerCase(), expected.toLowerCase()) })).sort((first, second) => first.distance - second.distance);
+        if (ranked[0] && ranked[0].distance <= Math.max(1, Math.floor(ranked[0].expected.length / 3))) {
+          const column = (match.index ?? 0) + match[0].lastIndexOf(actual) + 1;
+          addMisspelling(actual, ranked[0].expected, lineNumber, column);
+        }
+      }
+      const cleanLine = maskNoise(lineText);
+      for (const match of cleanLine.matchAll(/\b[A-Za-z_][A-Za-z0-9_]*\b/g)) {
+        const actual = match[0];
+        const column = (match.index ?? 0) + 1;
+        if (handledPositions.has(`${lineNumber}:${column}`) || exactExpectedWords.has(actual)) continue;
+        const caseVariants = variantsByLower.get(actual.toLowerCase());
+        if (caseVariants?.size === 1) {
+          addMisspelling(actual, [...caseVariants][0], lineNumber, column);
+          continue;
+        }
+        if (cppWords.has(actual.toLowerCase())) continue;
+        const ranked = fuzzyCandidates.map((expected) => ({ expected, distance: editDistance(actual.toLowerCase(), expected.toLowerCase()) })).filter(({ expected }) => expected[0]?.toLowerCase() === actual[0]?.toLowerCase()).sort((first, second) => first.distance - second.distance || first.expected.length - second.expected.length);
+        const nearest = ranked[0];
+        const limit = nearest && nearest.expected.length >= 5 ? 2 : 1;
+        if (nearest && nearest.distance > 0 && nearest.distance <= limit) addMisspelling(actual, nearest.expected, lineNumber, column);
+      }
+      const coutMatch = /std::cout\b(?!\s*<<)/.exec(lineText);
+      if (coutMatch) {
+        issues.push(`${locationText(copy, lineNumber, (coutMatch.index ?? 0) + 1)}: ${copy.diagnosticInsertion}`);
+        explainedTargets.add("std::cout");
+      }
+      const quoteCount = [...lineText].reduce((count, character, index) => count + (character === '"' && lineText[index - 1] !== "\\" ? 1 : 0), 0);
+      if (quoteCount % 2 !== 0) {
+        issues.push(`${locationText(copy, lineNumber, Math.max(1, lineText.indexOf('"') + 1))}: ${copy.diagnosticQuotes}`);
+        explainedTargets.add('"');
+      }
+      const singleQuotedText = /'[^'\n]{2,}'/.exec(lineText);
+      if (singleQuotedText) {
+        issues.push(`${locationText(copy, lineNumber, (singleQuotedText.index ?? 0) + 1)}: ${copy.diagnosticTextQuotes}`);
+        explainedTargets.add('"');
+      }
+      const withoutComment = lineText.replace(/\/\/.*$/, "");
+      const coutIndex = withoutComment.indexOf("std::cout");
+      if (coutIndex >= 0 && !withoutComment.slice(coutIndex).includes(";")) {
+        issues.push(`${locationText(copy, lineNumber, coutIndex + 1)}: ${copy.diagnosticSemicolon}`);
+        explainedTargets.add("std::cout");
+      }
+    });
+    const structure = maskNoise(code);
+    if ((structure.match(/\{/g) || []).length !== (structure.match(/\}/g) || []).length) {
+      issues.push(copy.diagnosticBraces);
+      explainedTargets.add("{");
+    }
+    if ((structure.match(/\(/g) || []).length !== (structure.match(/\)/g) || []).length) {
+      issues.push(copy.diagnosticParentheses);
+      explainedTargets.add("(");
+    }
+    checks.forEach((passed, index) => {
+      if (passed) return;
+      const expected = checkHints[index];
+      const alreadyExplained = [...explainedTargets].some((target) => expected.toLowerCase().includes(target.toLowerCase()));
+      if (!alreadyExplained) issues.push(`${copy.diagnosticExpected}: ${expected}`);
+    });
+    return `${copy.diagnosticTitle}
+${[...new Set(issues)].map((issue) => `\u2022 ${issue}`).join("\n")}`;
   };
 
   // app/tasks.ts
